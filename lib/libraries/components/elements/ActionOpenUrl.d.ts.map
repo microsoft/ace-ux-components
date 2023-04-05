@@ -1,0 +1,1 @@
+{"version":3,"file":"ActionOpenUrl.d.ts","sourceRoot":"","sources":["../../../../src/libraries/components/elements/ActionOpenUrl.ts"],"names":[],"mappings":"AAKA,OAAO,EAAE,iBAAiB,EAAE,MAAM,qBAAqB,CAAC;AAIxD,qBAAa,aAAc,SAAQ,iBAAiB;IAClD,SAAgB,GAAG,EAAE,MAAM,CAAC;gBAEhB,EAAE,EAAE,MAAM,EAAE,KAAK,EAAE,MAAM,EAAE,GAAG,EAAE,MAAM,EAAE,OAAO,CAAC,EAAE,MAAM;CAKrE"}
