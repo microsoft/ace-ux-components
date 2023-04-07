@@ -1,5 +1,5 @@
 {
-  "name": "ACE-ux-components",
+  "name": "ace-ux-components",
   "version": "0.1.6",
   "description": "Re-usable Viva UX components library based on Microsoft's VIVA adaptive cards extension",
   "private": false,
@@ -24,8 +24,7 @@
     "@microsoft/sp-adaptive-card-extension-base": "1.17.0",
     "@microsoft/sp-core-library": "1.17.0",
     "@microsoft/sp-property-pane": "1.17.0",
-    "dayjs": "^1.11.1",
-    "qrcode": "^1.5.1"
+    "dayjs": "^1.11.1"
   },
   "devDependencies": {
     "@babel/core": "^7.14.6",
