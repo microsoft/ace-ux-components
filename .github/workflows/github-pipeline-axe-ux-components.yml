@@ -9,6 +9,14 @@ on:
       - "feature/*"
     paths:
       - "ace-ux-components/*"
+  pull_request:
+    branches:
+      - main
+      - master
+      - develop
+      - "feature/*"
+    paths:
+      - "ace-ux-components/*"
 
 jobs:
   build-test:
