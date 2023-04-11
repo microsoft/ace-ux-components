@@ -1,0 +1,27 @@
+{
+  "extends": "./node_modules/@microsoft/rush-stack-compiler-4.5/includes/tsconfig-web.json",
+  "compilerOptions": {
+    "allowJs": true,
+    "baseUrl": ".",
+    "declaration": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    "inlineSources": false,
+    "jsx": "react",
+    "lib": ["es5", "es2015", "dom", "es2015.collection", "es2015.promise", "es2018.promise"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noUnusedLocals": false,
+    "outDir": "lib",
+    "preserveConstEnums": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strictNullChecks": false,
+    "target": "es5",
+    "typeRoots": ["./node_modules/@types", "./node_modules/@microsoft"],
+    "types": ["es6-promise", "webpack-env", "jest"]
+  },
+  "exclude": ["node_modules", "lib", "babel.config.js", "jest.config.ts", "test-results", "patches"]
+}
