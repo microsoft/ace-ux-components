@@ -12,9 +12,9 @@ module.exports = {
   
     collectCoverageFrom: [
       "./src/**/**.ts",
-      "!./src/libraries/components/*(assets|documentation|elements|loadingIndicator|qrCode)/**.ts",
-      "!./src/libraries/components/createTemplate.ts",
-      "!./src/libraries/components/**/index.ts",
+      "!./src/*(assets|documentation|elements|loadingIndicator|qrCode)/**.ts",
+      "!./src/createTemplate.ts",
+      "!./src/**/index.ts",
       "!./src/index.ts",
     ],
   
@@ -70,13 +70,13 @@ module.exports = {
     testEnvironment: "jsdom",
   
     // The glob patterns Jest uses to detect test files
-    testMatch: ["**/src/libraries/components/**/**.test.ts"],
+    testMatch: ["**/src/**/**.test.ts"],
   
     testPathIgnorePatterns: [
       "<rootDir>/node_modules/",
       "<rootDir>/patches/",
-      "<rootDir>/src/libraries/components/qrCode/",
-      "<rootDir>/src/libraries/components/weekCalendar/",
+      "<rootDir>/src/qrCode/",
+      "<rootDir>/src/weekCalendar/",
       "<rootDir>/lib/",
     ],
   
