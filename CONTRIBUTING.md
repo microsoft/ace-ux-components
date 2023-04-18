@@ -23,7 +23,7 @@ All submissions, including submissions by project members, require review. We us
 To run the code linter, use:
 
 ```bash
-npm run lint
+npm run lint-fix
 ```
 
 ### Commit Messages
