@@ -1,3 +1,48 @@
+# Contributing
+
+## How to Contribute
+
+### Getting Code
+
+Make sure that you're running on Node.js 16+ and NPM 8+, to verify and upgrade NPM, do the following:
+
+```bash
+node --version
+npm --version
+npm i -g npm@latest
+```
+
+### Code Reviews
+
+All submissions, including submissions by project members, require review. We use GitHub pull requests for this purpose.
+
+### Code Style
+
+- Coding style is fully defined in the `.eslintrc` file.
+
+To run the code linter, use:
+
+```bash
+npm run lint
+```
+
+### Commit Messages
+
+Ensure that your commit messages provide clear and concise information on the changes being made. We currently do not following a specific commit message guideline.
+
+### Writing Documenation
+
+When creating new components or updating current ones, you need to ensure that you are updating our current documenation accordingly. Our current documentation can be found in `ace-ux-components/documenation/Components.md` Make sure that you are updating this document with the appropriate screenshots, if necessary.
+
+### Adding New Dependencies
+
+For all dependencies (both installation and development):
+
+- Do not add a dependency if the desired functionality is easily implementable.
+- If adding a dependency, it should be well-maintained and trustworthy.
+
+Additionally, these dependencies need to be approved by the Microsoft Open Source Site, which contains all the packages that are approved for use.
+
 # Instructions for Logging Issues
 
 ## 1. Search for Duplicates
