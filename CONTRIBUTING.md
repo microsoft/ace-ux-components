@@ -12,6 +12,14 @@ npm --version
 npm i -g npm@latest
 ```
 
+### Setting Up
+
+Now that you've ensured you're running the proper versions of Node.js & NPM, do the following:
+
+```bash
+npm install
+```
+
 ### Code Reviews
 
 All submissions, including submissions by project members, require review. We use GitHub pull requests for this purpose.
