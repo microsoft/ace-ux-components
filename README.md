@@ -4,10 +4,12 @@ ACE-UX-Components provides a library for resuable components based on Microsoft'
 
 ## Relevant Links / Documentation
 
-1. [Contributing](./CONTRIBUTING.md)
-2. [Code of Conduct](./CODE_OF_CONDUCT.md)
-3. [Security](./SECURITY.md)
-4. [Support](./SUPPORT.md)
+|                      | Relevant Docs                              |
+| -------------------- | ------------------------------------------ |
+| Contributing & Setup | [CONTRIBUTING.md](./CONTRIBUTING.md)       |
+| Code of Conduct      | [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) |
+| Security             | [SECURITY.md](./SECURITY.md)               |
+| Support              | [SUPPORT.md](./SUPPORT.md)                 |
 
 ## Contributing
 
