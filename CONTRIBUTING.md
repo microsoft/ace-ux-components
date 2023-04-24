@@ -4,7 +4,7 @@
 
 ### Getting Code
 
-Make sure that you're running on Node.js 16+ and NPM 8+, to verify and upgrade NPM, do the following:
+Make sure that you're running on Node.js 12+ and NPM 8+, to verify and upgrade NPM, do the following:
 
 ```bash
 node --version
