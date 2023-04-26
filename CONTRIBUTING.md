@@ -20,6 +20,10 @@ Now that you've ensured you're running the proper versions of Node.js & NPM, do 
 npm install
 ```
 
+### Usage
+
+To use the components that are created in this repository, review the [component documentation](/documentation//Components.md) available.
+
 ### Code Reviews
 
 All submissions, including submissions by project members, require review. We use GitHub pull requests for this purpose.
