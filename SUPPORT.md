@@ -1,25 +1,28 @@
-# TODO: The maintainer of this repo has not yet edited this file
+# Instructions for Logging Issues
 
-**REPO OWNER**: Do you want Customer Service & Support (CSS) support for this product/project?
+## 1. Search for Duplicates
 
-- **No CSS support:** Fill out this template with information about how to file issues and get help.
-- **Yes CSS support:** Fill out an intake form at [aka.ms/onboardsupport](https://aka.ms/onboardsupport). CSS will work with/help you to determine next steps.
-- **Not sure?** Fill out an intake as though the answer were "Yes". CSS will help you decide.
+[Search the existing issues](https://github.com/microsoft/ace-ux-components/issues) before logging a new one.
 
-*Then remove this first heading from this SUPPORT.MD file before publishing your repo.*
+## 2. Do you have a question?
 
-# Support
+The issue tracker is for **issues**, in other words, bugs and suggestions.
+If you have a _question_, _feedback_ or _suggestions_, please contact our team at
+aceuxcomponentscrew@microsoft.com
 
-## How to file issues and get help  
+In general, things we find useful when reviewing suggestions are:
 
-This project uses GitHub Issues to track bugs and feature requests. Please search the existing 
-issues before filing new issues to avoid duplicates.  For new issues, file your bug or 
-feature request as a new Issue.
+- A description of the problem you're trying to solve
+- An overview of the suggested solution
+- Examples of how the suggestion would work in various places
+  - Code examples showing e.g. "this would be an error, this wouldn't"
+  - Code examples showing the generated Typescript (if applicable)
+- If relevant, precedent in other languages can be useful for establishing context and expected behavior
 
-For help and questions about using this project, please **REPO MAINTAINER: INSERT INSTRUCTIONS HERE 
-FOR HOW TO ENGAGE REPO OWNERS OR COMMUNITY FOR HELP. COULD BE A STACK OVERFLOW TAG OR OTHER
-CHANNEL. WHERE WILL YOU HELP PEOPLE?**.
+## 3. Did you find a bug?
 
-## Microsoft Support Policy  
+When logging a bug, please be sure to include the following:
 
-Support for this **PROJECT or PRODUCT** is limited to the resources listed above.
+- Which sample and in what programming language
+- If at all possible, an _isolated_ way to reproduce the behavior
+- The behavior you expect to see, and the actual behavior
