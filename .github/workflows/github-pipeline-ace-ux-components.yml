@@ -8,6 +8,10 @@ on:
     types: [opened, synchronize]
     paths:
       - "ace-ux-components/*"
+      
+permissions:
+  pull-requests: write
+  contents: write
 
 jobs:
   build-test:
