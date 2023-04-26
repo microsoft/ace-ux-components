@@ -2,12 +2,13 @@
 
 ACE-UX-Components provides a library for resuable components based on Microsoft's VIVA Adaptive Cards Extension (ACE).
 
-|                      | Relevant Docs                              |
-| -------------------- | ------------------------------------------ |
-| Contributing & Setup | [CONTRIBUTING.md](./CONTRIBUTING.md)       |
-| Code of Conduct      | [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) |
-| Security             | [SECURITY.md](./SECURITY.md)               |
-| Support              | [SUPPORT.md](./SUPPORT.md)                 |
+|                      | Relevant Docs                                  |
+| -------------------- | ---------------------------------------------- |
+| Contributing & Setup | [CONTRIBUTING.md](./CONTRIBUTING.md)           |
+| Code of Conduct      | [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md)     |
+| Components           | [Components.md](./documentation/Components.md) |
+| Security             | [SECURITY.md](./SECURITY.md)                   |
+| Support              | [SUPPORT.md](./SUPPORT.md)                     |
 
 ## Contributing
 
