@@ -8,7 +8,7 @@
 
 The issue tracker is for **issues**, in other words, bugs and suggestions.
 If you have a _question_, _feedback_ or _suggestions_, please contact our team at
-myhubprodx@microsoft.com
+aceuxcomponentscrew@microsoft.com
 
 In general, things we find useful when reviewing suggestions are:
 
