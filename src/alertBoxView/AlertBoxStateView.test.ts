@@ -1,3 +1,8 @@
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
 import { AlertBoxStateView } from "./AlertBoxStateView";
 import { ErrorAlertIcon, InfoIcon, SuccessAlertIcon, WarningIcon } from "../assets";
 import { ActionStyle, ContainerStyle } from "../elements";
