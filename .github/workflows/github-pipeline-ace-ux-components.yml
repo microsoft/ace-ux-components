@@ -28,7 +28,7 @@ jobs:
     if: >
       success() &&
       github.event_name == 'push' &&
-      github.ref == 'refs/heads/develop' &&
+      github.ref == 'refs/heads/main' &&
       github.head_commit.author.email != 'your-bot-email@example.com'
     runs-on: macos-latest
     steps:
