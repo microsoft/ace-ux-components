@@ -1,19 +1,9 @@
 name: Build and Deploy SPFx Library
 
 on:
-  push:
-    branches:
-      - main
-      - master
-      - develop
-      - "feature/*"
-    paths:
-      - "ace-ux-components/*"
   pull_request:
     branches:
       - main
-      - master
-      - develop
       - "feature/*"
     types: [opened, synchronize]
     paths:
