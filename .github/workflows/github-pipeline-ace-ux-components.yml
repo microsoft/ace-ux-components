@@ -2,12 +2,10 @@ name: Build and Deploy SPFx Library
 
 on:
   pull_request:
-    branches:
-      - main
-      - "feature/*"
+    branches: '*'
     types: [opened, synchronize]
     paths:
-      - "ace-ux-components/*"
+      - '.github/workflows/**'
       
 permissions:
   pull-requests: write
