@@ -39,7 +39,6 @@ The different components are more complex and are built using the elements menti
 | [Loading indicator](#loading-indicator) | A loading spinner along with a label used to display something is loading.                                           |
 | [Persona](#persona)                     | A component used to display people's information (profile picture, name, job title, etc.).                           |
 | [Picker](#picker)                       | A selectable element that displays the currently selected item. Selecting it opens the list of items.                |
-| [QRCode](#qr-code)                      | A component used to display a QR code with the option to send the user an SMS to their mobile deivce.                |
 | [Search bar](#search-bar)               | A text input along with a confirmation and cancellation button. Should be used to either search or filter.           |
 | [Search component](#search-component)   | An all-in-one component displaying the search bar and search results. The data must be passed to the component.      |
 | [Section list](#section-list)           | A component used to display multiple lists separated by sections.                                                    |
@@ -796,78 +795,6 @@ Examples:
 ![Alt](./assets/SearchBarWithPlaceholder.png "Search bar")
 
 ![Alt](./assets/SearchBarWithInput.png "Search bar")
-
----
-
-### QR code
-
-A component for generating a QR code based on the URL thats passed into it. Also has the ability to handle the send SMS to the user's mobile device flow.
-Please work with your designers on the content thats needed for the rest of the page.
-
-| Props              | Type         | Required | Description                                                                             |
-| ------------------ | ------------ | -------- | --------------------------------------------------------------------------------------- |
-| url                | string       | yes      | URL to be used to generate the QR code.                                                 |
-| altText            | string       | yes      | Alt text for the QR Code image that is generated.                                       |
-| focusID            | string       | yes      | Unique identifier for setting focus for accessibility.                                  |
-| id                 | string       | no       | Unique identifier for the QR component instance.                                        |
-| notificationStatus | QrCodeStatus | no       | Status of the send SMS to mobile flow. Set this initially to QrCodeStatus.InitialStatus |
-| phoneNumber        | string       | no       | Phone number that is taken from the action data. Used in display error/success text.    |
-
-Usage:
-
-```TypeScript
-class TestView extends BaseAdaptiveCardView<{}, State, Data> {
-  public get template(): ISPFXAdaptiveCard {
-    /**
-    * this.state = {
-    *   qrCodeStatus: QrCodeStatus.InitialStatus
-    *   phoneNumber: "",
-    *   focusID: "testID"
-    * }
-    */
-
-    return createTemplate([
-      new QrCode("https://www.microsoft.com/en-us/", "QR Code", this.state.focusID, "ID", this.state.qrCodeStatus, this.state.phoneNumber);
-    ])
-  };
-
-  // Actions for the send to SMS is handled on the view level.
-  public onAction(args: ISubmitActionArguments): void {
-      if (args.id.contains("cancelActionID") || args.id.contains("doneActionID") || args.id === "") {
-      this.setState({ qrCodeStatus: QrCodeStatus.InitialStatus, focusID: "smsFocus_container" });
-    } else if (args.id.contains("restartActionID") || args.id.contains("initiateSMSActionID")) {
-      this.setState({ qrCodeStatus: QrCodeStatus.InputTextStatus, focusID: "smsFocus_container" });
-    } else if (args.id.contains("sendTextActionID")) {
-      await checkIfUserOptedOutAPI(args.data.phoneNumberInputID);
-      // If user has not opted out, set to success, else use specific error message.
-      this.setState({ qrCodeStatus: QrCodeStatus.SuccessStatus, phoneNumber: args.data.phoneNumberInputID, focusID: "smsFocus_container" });
-      console.log("Call API");
-    }
-  }
-}
-```
-
-Examples:
-
-Initial View for the QR Code (Set state to QrCodeStatus.InitialStatus)
-
-![Alt](./assets/QrCodeInitial.jpg "Qr Code Initial")
-
-Terms View for the QR Code to prompt user to input their phone number and accept terms (Set state to QrCodeStatus.InputTextStatus)
-
-![Alt](./assets/QrCodeTerms.jpg "Qr Code Terms")
-
-Success View if the SMS is successfully sent to user's mobile number (Set state to QrCodeStatus.SuccessStatus)
-
-![Alt](./assets/QrCodeSuccess.jpg "Qr Code Success")
-
-Error View if the user has opted out of the SMS feature (Set state to QrCodeStatus.OptedOutErrorStatus)
-
-![Alt](./assets/QrCodeOptedOutError.jpg "Qr Opted Out")
-
-Error View if the API is unable to send an SMS to the user / invalid number (Set state to QrCodeStatus.UnableToNotifyErrorStatus)
-
-![Alt](./assets/QrCodeUnableToNotifyError.jpg "Qr Code Unable to Notify Error")
 
 ---
 
