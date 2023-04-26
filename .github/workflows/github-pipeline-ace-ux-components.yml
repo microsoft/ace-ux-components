@@ -3,9 +3,6 @@ name: Build and Deploy SPFx Library
 on:
   pull_request:
     branches: '*'
-    types: [opened, synchronize]
-    paths:
-      - '.github/workflows/**'
       
 permissions:
   pull-requests: write
