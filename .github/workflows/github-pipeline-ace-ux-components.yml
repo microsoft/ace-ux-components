@@ -2,7 +2,8 @@ name: Build and Deploy SPFx Library
 
 on:
   pull_request:
-    branches: "*"
+    branches:
+      - main
   workflow_dispatch: # Add this event to enable manual triggering
 
 permissions:
@@ -43,4 +44,3 @@ jobs:
         uses: mheap/github-action-npm-publish@v1
         with:
           access: public
-    
