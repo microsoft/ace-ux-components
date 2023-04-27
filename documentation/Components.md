@@ -1,4 +1,4 @@
-# MyHub Viva common components
+# ACE UX Components
 
 ## Table of content
 
@@ -17,11 +17,7 @@ The function already defines the schema, the type and the version properties of 
 
 The elements directory contains every basic AdaptiveCards UI elements that are available at the version we're currently using. There's `TextBlock`, `Container`, `ActionSubmit`, just to name a few. For more details on those elements, please refer to the [AdaptiveCards documentation](https://adaptivecards.io/explorer/AdaptiveCard.html) for the full list of elements available.
 
-If a property of an element or an entire element is missing in this library, please double check the version where that property and/or element has been introduced in AdaptiveCards. If it's available in the version we're currently using, feel free to contribute to this component library or reach out to the [MyHub Viva connections crew](mailto:myhubvivaconnectioncrew@service.microsoft.com)
-
-## Figma file
-
-For a reference, please check out the [Figma file](https://www.figma.com/file/LlG8OgGsTtC6BHZcwJg7eA/%F0%9F%90%B1%E2%80%8D%F0%9F%8F%8D-MyHub_Mobile_Toolkit?node-id=18767%3A28979) for the different components.
+If a property of an element or an entire element is missing in this library, please double check the version where that property and/or element has been introduced in AdaptiveCards. If it's available in the version we're currently using, feel free to contribute to this component library or reach out to the [ACE UX Components crew](mailto:aceuxcomponentscrew@microsoft.com)
 
 ## Components
 
