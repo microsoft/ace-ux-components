@@ -2,8 +2,9 @@ name: Build and Deploy SPFx Library
 
 on:
   pull_request:
-    branches: '*'
-      
+    branches: "*"
+  workflow_dispatch: # Add this event to enable manual triggering
+
 permissions:
   pull-requests: write
   contents: write
