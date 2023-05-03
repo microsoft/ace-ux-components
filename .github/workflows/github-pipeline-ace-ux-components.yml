@@ -20,6 +20,8 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: "16.x"
+      - name: Open ux-components folder
+        run: cd ux-components
       - name: Install dependencies
         run: npm install
       - name: Build and Test
