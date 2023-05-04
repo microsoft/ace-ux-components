@@ -24,10 +24,6 @@ jobs:
         run: cd ux-components && npm install
       - name: Build and Test for ux-components
         run: cd ux-components && npm run build
-      - name: Install dependencies for dashboard cards
-        run: cd dashboard && npm install
-      - name: Build and Test for dashboard cards
-        run: cd dashboard && npm run build
   deploy-stable:
     needs: build-test
     if: >
