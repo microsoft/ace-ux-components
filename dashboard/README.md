@@ -29,4 +29,4 @@
 ## How to link ux-component project
 
 - Once you changed any file in ux-components project, Ensure that you are at the dashboard folder, in the command-line run which build the latest ux-components and pull the latest library upon the build succeeds.
-  - **npm run pull-viva-ux**
+  - **npm run pull-ace-ux**
