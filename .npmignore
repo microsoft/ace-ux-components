@@ -14,9 +14,10 @@ tslint.json
 
 *.log
 junit.xml
-jest.config.ts
+jest.config.js
 babel.config.js
 assetsTransformer.js
+beachball.config.js
 
 .yo-rc.json
 .vscode

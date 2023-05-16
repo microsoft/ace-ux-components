@@ -1,0 +1,48 @@
+name: Release
+
+# only on manual trigger
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    # You'd need to create this environment and add the secrets NPM_AUTHTOKEN and REPO_PAT
+    environment: release
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+        with:
+          # Don't save creds in the git config (so it's easier to override later)
+          persist-credentials: false
+
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16.x"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build and Test
+        run: npm run build
+
+      - name: Publish package
+        run: |
+          # Git requires these to be set before committing
+          git config user.email "<service-account-email>@microsoft.com"
+          git config user.name "<some name>"
+
+          # Get the existing remote URL without creds, and use a trap (like try/finally)
+          # to restore it after this step finishes
+          trap "git remote set-url origin '$(git remote get-url origin)'" EXIT
+
+          # Add a token to the remote URL for auth during release
+          git remote set-url origin "https://$REPO_PAT@github.com/$GITHUB_REPOSITORY"
+
+          npm run release -- -y -n $NPM_AUTHTOKEN
+        env:
+          NPM_AUTHTOKEN: ${{ secrets.NPM_AUTHTOKEN }}
+          REPO_PAT: ${{ secrets.REPO_PAT }}

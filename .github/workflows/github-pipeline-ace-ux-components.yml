@@ -22,6 +22,8 @@ jobs:
           node-version: "16.x"
       - name: Install dependencies
         run: npm install
+      - name: Verify change files
+        run: npm run check-change
       - name: Build and Test
         run: npm run build
   deploy-stable:
