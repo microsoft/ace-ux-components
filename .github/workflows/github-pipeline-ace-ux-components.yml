@@ -22,25 +22,7 @@ jobs:
           node-version: "16.x"
       - name: Install dependencies
         run: npm install
+      - name: Verify change files
+        run: npm run check-change
       - name: Build and Test
         run: npm run build
-  deploy-stable:
-    needs: build-test
-    if: >
-      success() &&
-      github.event_name == 'push' &&
-      github.ref == 'refs/heads/main' &&
-      github.head_commit.author.email != 'your-bot-email@example.com'
-    runs-on: macos-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Extract stable package
-        uses: dawidd6/action-extract@v2
-        with:
-          archive: ${{ github.workspace }}/StablePackage/*.tgz
-          dest: "."
-      - name: Publish NPM package
-        uses: mheap/github-action-npm-publish@v1
-        with:
-          access: public

@@ -1,11 +1,17 @@
 {
   "name": "ace-ux-components",
-  "version": "0.1.6",
+  "version": "0.0.1-beta",
   "description": "Re-usable Viva UX components library based on Microsoft's VIVA adaptive cards extension",
   "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/ace-ux-components"
+  },
   "main": "lib/index.js",
   "scripts": {
     "audit-fix": "npm audit fix --registry=https://registry.npmjs.org/",
+    "change": "beachball change",
+    "check-change": "beachball check",
     "clean": "rimraf lib/",
     "copy-files": "copyfiles -u 1 src/assets/*.png src/assets/*.gif src/assets/*.svg lib/",
     "build": "npm run clean && tsc -p tsconfig.json && npm run copy-files",
@@ -16,6 +22,7 @@
     "patch-adaptivecards": "node patches/adaptivecards/patch.js",
     "patch-types-jest-diff": "node patches/@types/jest-diff/patch.js",
     "patch-types-pretty-format": "node patches/@types/pretty-format/patch.js",
+    "release": "beachball publish",
     "test": "jest",
     "preinstall": "npx force-resolutions",
     "postinstall": "npm run patch-node-modules"
@@ -44,6 +51,7 @@
     "adaptivecards": "^2.11.1",
     "ajv": "~6.12.3",
     "babel-jest": "^26.6.3",
+    "beachball": "^2.33.0",
     "copyfiles": "2.4.1",
     "gulp": "~4.0.2",
     "jest": "^26.6.3",
