@@ -40,7 +40,7 @@ jobs:
           trap "git remote set-url origin '$(git remote get-url origin)'" EXIT
 
           # Add a token to the remote URL for auth during release
-          git remote set-url origin "https://$REPO_PAT@github.com/$GITHUB_REPOSITORY"
+          git remote set-url origin "https://$REPO_PAT@github.com/microsoft/ace-ux-components"
 
           npm run release -- -y -n $NPM_AUTHTOKEN
         env:
