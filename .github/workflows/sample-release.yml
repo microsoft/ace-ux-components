@@ -32,8 +32,8 @@ jobs:
       - name: Publish package
         run: |
           # Git requires these to be set before committing
-          git config user.email "<service-account-email>@microsoft.com"
-          git config user.name "<some name>"
+          git config user.email "acecommoncomponents@microsoft.com"
+          git config user.name "acecommoncomponents"
 
           # Get the existing remote URL without creds, and use a trap (like try/finally)
           # to restore it after this step finishes

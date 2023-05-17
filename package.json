@@ -1,6 +1,6 @@
 {
   "name": "ace-ux-components",
-  "version": "0.1.6",
+  "version": "0.0.1-beta",
   "description": "Re-usable Viva UX components library based on Microsoft's VIVA adaptive cards extension",
   "private": false,
   "repository": {
