@@ -2,6 +2,6 @@
   "type": "minor",
   "comment": "update release pipeline & readme file",
   "packageName": "ace-ux-components",
-  "email": "kylemas@microsoft.com",
+  "email": "kylemas",
   "dependentChangeType": "patch"
 }
