@@ -1,4 +1,4 @@
-name: Build and Deploy SPFx Library
+name: Build dashboard SPFx package
 
 on:
   pull_request:
@@ -22,11 +22,8 @@ jobs:
         with:
           node-version: "16.x"
 
-      - name: Install dependencies for ux-components
-        run: cd ux-components && npm install
+      - name: Install dependencies for dashboard folder
+        run: cd dashboard && npm install
 
-      - name: Verify change files
-        run: npm run check-change
-
-      - name: Build and Test for ux-components
-        run: cd ux-components && npm run build
+      - name: Build dashboard package
+        run: cd dashboard && npm run build

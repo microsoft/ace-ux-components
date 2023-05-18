@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Set up beachball for automated publishing",
+  "packageName": "ace-ux-components",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}

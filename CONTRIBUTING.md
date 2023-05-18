@@ -42,6 +42,18 @@ npm run lint-fix
 
 Ensure that your commit messages provide clear and concise information on the changes being made. We currently do not following a specific commit message guideline.
 
+### Handling Changelogs
+
+After committing your code, you must ensure that you log the appropriate changes for our changelog. We currently use Beachball, a package that allows to manage our versions and changelog. The PR gates are also setup to check whether you've added the changelog files or not.
+
+To add your changelog files, you need to run the command:
+
+```bash
+npm run change
+```
+
+And follow the instructions for adding your changes.
+
 ### Writing Documenation
 
 When creating new components or updating current ones, you need to ensure that you are updating our current documenation accordingly. Our current documentation can be found in `ace-ux-components/documenation/Components.md` Make sure that you are updating this document with the appropriate screenshots, if necessary.
