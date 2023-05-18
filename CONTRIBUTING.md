@@ -52,6 +52,8 @@ To add your changelog files, you need to run the command:
 npm run change
 ```
 
+And follow the instructions for adding your changes.
+
 ### Writing Documenation
 
 When creating new components or updating current ones, you need to ensure that you are updating our current documenation accordingly. Our current documentation can be found in `ace-ux-components/documenation/Components.md` Make sure that you are updating this document with the appropriate screenshots, if necessary.
