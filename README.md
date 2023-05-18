@@ -1,6 +1,6 @@
 # ACE UX Components
 
-ACE-UX-Components provides a library for resuable components based on Microsoft's VIVA Adaptive Cards Extension (ACE).
+ACE-UX-Components provides a library for resuable components based on Microsoft's Sharepoint Adaptive Cards Extension (ACE).
 
 |                      | Relevant Docs                                  |
 | -------------------- | ---------------------------------------------- |
