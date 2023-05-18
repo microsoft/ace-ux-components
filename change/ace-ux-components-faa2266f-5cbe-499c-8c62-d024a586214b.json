@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "update npm release pipeline with git credentials",
+  "comment": "update contributing.md file w/ beachball instructions",
   "packageName": "ace-ux-components",
   "email": "kylemas",
   "dependentChangeType": "patch"
