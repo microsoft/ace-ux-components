@@ -2,6 +2,6 @@
   "type": "patch",
   "comment": "update npm release pipeline with git credentials",
   "packageName": "ace-ux-components",
-  "email": "kylemas@microsoft.com",
+  "email": "kylemas",
   "dependentChangeType": "patch"
 }
