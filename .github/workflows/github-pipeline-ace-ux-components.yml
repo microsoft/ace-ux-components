@@ -1,4 +1,4 @@
-name: Build and Deploy SPFx Library
+name: Build SPFx Library
 
 on:
   pull_request:
