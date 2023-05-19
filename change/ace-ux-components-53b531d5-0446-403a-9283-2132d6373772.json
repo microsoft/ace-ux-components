@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "run & add beachball sync + update name for build pipeline",
+  "packageName": "ace-ux-components",
+  "email": "kylemas@microsoft.com",
+  "dependentChangeType": "patch"
+}
