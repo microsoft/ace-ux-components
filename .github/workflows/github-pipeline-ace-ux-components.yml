@@ -26,7 +26,7 @@ jobs:
         run: cd ux-components && npm install
 
       - name: Verify change files
-        run: npm run check-change
+        run: cd ux-components && npm run check-change
 
       - name: Build and Test for ux-components
         run: cd ux-components && npm run build
