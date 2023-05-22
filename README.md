@@ -26,7 +26,7 @@ Now that you've ensured you're running the proper versions of Node.js & NPM, do 
 npm install
 ```
 
-This will add the package as a dependency in your package.json file and download it under node_modules/ace-ux-components.
+This will add the package as a dependency in your `package.json` file and download it under `node_modules/ace-ux-components`.
 
 ## Contributing
 
