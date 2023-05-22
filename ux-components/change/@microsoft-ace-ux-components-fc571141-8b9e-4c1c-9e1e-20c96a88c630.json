@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "moved documentation inside ux-components folder & add root readme",
+  "packageName": "@microsoft/ace-ux-components",
+  "email": "kylemas@microsoft.com",
+  "dependentChangeType": "patch"
+}

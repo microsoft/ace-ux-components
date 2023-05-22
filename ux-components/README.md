@@ -2,14 +2,23 @@
 
 ACE-UX-Components provides a library for resuable components based on Microsoft's Sharepoint Adaptive Cards Extension (ACE).
 
-The following table will help you navigate between the 2 projects in this repository.
-
-|          | UX-Components                                               | Dashboard                                                 |
-| -------- | ----------------------------------------------------------- | --------------------------------------------------------- |
-| Overview | Contains the ACE UX components published as an npm package. | Contains a sample card to test out the ACE UX Components. |
-| README   | [README.md](./ux-components/README.md)                      | [README.md](./dashboard/README.md)                        |
+|                      | Relevant Docs                                  |
+| -------------------- | ---------------------------------------------- |
+| Contributing & Setup | [CONTRIBUTING.md](./CONTRIBUTING.md)           |
+| Code of Conduct      | [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md)     |
+| Components           | [Components.md](./documentation/Components.md) |
+| Security             | [SECURITY.md](./SECURITY.md)                   |
+| Support              | [SUPPORT.md](./SUPPORT.md)                     |
 
 ## Using the ACE UX Components
+
+Make sure that you're running on Node.js 12+ and NPM 8+, to verify and upgrade NPM, do the following:
+
+```bash
+node --version
+npm --version
+npm i -g npm@latest
+```
 
 From NPM:
 To install the `@microsoft/ace-ux-components` library on your project, use npm as follows:

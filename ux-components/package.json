@@ -1,6 +1,6 @@
 {
   "name": "@microsoft/ace-ux-components",
-  "version": "1.1.1",
+  "version": "1.2.1",
   "description": "Re-usable UX components library based on Microsoft's Sharepoint adaptive cards extension (ACE)",
   "private": false,
   "repository": {
