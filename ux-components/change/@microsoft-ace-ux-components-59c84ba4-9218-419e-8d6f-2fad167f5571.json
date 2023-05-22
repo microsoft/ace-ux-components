@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Updated package name to add microsoft scope.",
+  "packageName": "@microsoft/ace-ux-components",
+  "email": "sgollapelly@microsoft.com",
+  "dependentChangeType": "patch"
+}

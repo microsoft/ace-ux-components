@@ -1,6 +1,6 @@
 {
-  "name": "ace-ux-components",
-  "version": "1.0.0",
+  "name": "@microsoft/ace-ux-components",
+  "version": "1.1.1",
   "description": "Re-usable UX components library based on Microsoft's Sharepoint adaptive cards extension (ACE)",
   "private": false,
   "repository": {
@@ -23,6 +23,7 @@
     "patch-types-jest-diff": "node patches/@types/jest-diff/patch.js",
     "patch-types-pretty-format": "node patches/@types/pretty-format/patch.js",
     "release": "beachball publish",
+    "sync": "beachball sync",
     "test": "jest",
     "preinstall": "npx force-resolutions",
     "postinstall": "npm run patch-node-modules"

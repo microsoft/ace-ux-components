@@ -2,6 +2,6 @@
   "type": "patch",
   "comment": "update contributing.md file w/ beachball instructions",
   "packageName": "ace-ux-components",
-  "email": "kylemas",
+  "email": "kylemas@microsoft",
   "dependentChangeType": "patch"
 }
