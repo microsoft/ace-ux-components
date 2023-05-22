@@ -24,10 +24,10 @@ jobs:
           node-version: "16.x"
 
       - name: Install dependencies
-        run: npm install
+        run: cd ux-components && npm install
 
       - name: Build and Test
-        run: npm run build
+        run: cd ux-components && npm run build
 
       - name: Publish package
         run: |
@@ -42,7 +42,7 @@ jobs:
           # Add a token to the remote URL for auth during release
           git remote set-url origin "https://$REPO_PAT@github.com/microsoft/ace-ux-components"
 
-          npm run release -- -y -n $NPM_AUTHTOKEN
+          cd ux-components && npm run release -- -y -n $NPM_AUTHTOKEN
         env:
           NPM_AUTHTOKEN: ${{ secrets.NPM_AUTHTOKEN }}
           REPO_PAT: ${{ secrets.REPO_PAT }}
