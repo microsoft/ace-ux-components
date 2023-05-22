@@ -12,7 +12,7 @@ The following table will help you navigate between the 2 projects in this reposi
 ## Using the ACE UX Components
 
 From NPM:
-To install the `@microsoft/ace-ux-components` library, use npm as follows:
+To install the `@microsoft/ace-ux-components` library on your project, use npm as follows:
 
 ```bash
 npm install --save @microsoft/ace-ux-components
