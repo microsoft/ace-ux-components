@@ -20,10 +20,11 @@ npm --version
 npm i -g npm@latest
 ```
 
-Now that you've ensured you're running the proper versions of Node.js & NPM, do the following:
+From NPM:
+To install the `@microsoft/ace-ux-components` library on your project, use npm as follows:
 
 ```bash
-npm install
+npm install --save @microsoft/ace-ux-components
 ```
 
 This will add the package as a dependency in your `package.json` file and download it under `node_modules/ace-ux-components`.
