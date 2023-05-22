@@ -10,6 +10,24 @@ ACE-UX-Components provides a library for resuable components based on Microsoft'
 | Security             | [SECURITY.md](./SECURITY.md)                   |
 | Support              | [SUPPORT.md](./SUPPORT.md)                     |
 
+## Using the ACE UX Components
+
+Make sure that you're running on Node.js 12+ and NPM 8+, to verify and upgrade NPM, do the following:
+
+```bash
+node --version
+npm --version
+npm i -g npm@latest
+```
+
+Now that you've ensured you're running the proper versions of Node.js & NPM, do the following:
+
+```bash
+npm install
+```
+
+This will add the package as a dependency in your package.json file and download it under node_modules/ace-ux-components.
+
 ## Contributing
 
 This project welcomes contributions and suggestions. Most contributions require you to agree to a
