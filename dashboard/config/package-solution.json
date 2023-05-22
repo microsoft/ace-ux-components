@@ -1,0 +1,14 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "ace-ux-components-client-side-solution",
+    "id": "82f7472e-563b-4736-a2f8-ec9886bde501",
+    "version": "1.0.0.1",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": false,
+    "isDomainIsolated": false
+  },
+  "paths": {
+    "zippedPackage": "solution/ace-ux-components-client-side-solution.sppkg"
+  }
+}

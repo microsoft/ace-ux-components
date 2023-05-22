@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "added sample component card and folder structure changes",
+  "packageName": "ace-ux-components",
+  "email": "animma@microsoft.com",
+  "dependentChangeType": "patch"
+}
