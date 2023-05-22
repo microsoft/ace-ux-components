@@ -1,0 +1,7 @@
+lib/
+dist/
+config/
+patches/
+node_modules/
+jest.config.ts
+customLintRules/

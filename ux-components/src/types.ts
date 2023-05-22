@@ -124,4 +124,9 @@ export enum AriaLive {
   Off = "off",
 }
 
+export enum AceRenderType {
+  Card = "Card",
+  QuickView = "QuickView",
+}
+
 export const LOADING_ID: string = "LOADING_ID";

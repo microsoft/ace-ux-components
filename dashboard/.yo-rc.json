@@ -1,0 +1,14 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": true,
+    "isCreatingSolution": false,
+    "environment": "spo",
+    "version": "1.17.0",
+    "libraryName": "ace-ux-components-client-side-solution",
+    "libraryId": "52c5ff31-9f17-4b50-8e1f-ea3145d8e95f",
+    "packageManager": "npm",
+    "isDomainIsolated": false,
+    "templateType": "Image",
+    "componentType": "adaptiveCardExtension"
+  }
+}
