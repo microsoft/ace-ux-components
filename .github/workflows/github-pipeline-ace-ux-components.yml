@@ -30,3 +30,9 @@ jobs:
 
       - name: Build and Test for ux-components
         run: cd ux-components && npm run build
+
+      - name: Install dependencies for dashboard
+        run: cd dashboard && npm install
+
+      - name: Build dashboard
+        run: cd dashboard && npm run build
