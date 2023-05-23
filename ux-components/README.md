@@ -27,7 +27,7 @@ To install the `@microsoft/ace-ux-components` library on your project, use npm a
 npm install --save @microsoft/ace-ux-components
 ```
 
-This will add the package as a dependency in your `package.json` file and download it under `node_modules/ace-ux-components`.
+This will add the package as a dependency in your `package.json` file and download it under `node_modules/@microsoft/ace-ux-components`.
 
 ## Contributing
 
