@@ -25,5 +25,5 @@ jobs:
       - name: Install dependencies for dashboard
         run: cd dashboard && npm install
 
-      - name: Build and Test for ux-components
+      - name: Build and Test for dashboard
         run: cd dashboard && npm run build
