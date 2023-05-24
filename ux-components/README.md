@@ -29,6 +29,16 @@ npm install --save @microsoft/ace-ux-components
 
 This will add the package as a dependency in your `package.json` file and download it under `node_modules/@microsoft/ace-ux-components`.
 
+## Version Sync
+
+If the package version you're trying to publish already exists & causes the release pipeline to fail, run the following command and then push the changes:
+
+```bash
+npm run sync
+```
+
+After pushing the changes, you can merge your branch. This will synchronize the versions and allow you to publish the package.
+
 ## Contributing
 
 This project welcomes contributions and suggestions. Most contributions require you to agree to a
