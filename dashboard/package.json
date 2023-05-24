@@ -33,7 +33,7 @@
     "upgrade-lib-full": "cd ../ux-components && rm -rf lib && rm -rf node_modules && npm i && npm run build && cd ../dashboard && npm update ux-components",
     "upgrade-lib-full-windows": "cd ../ux-components && del lib /Q && del node_modules /Q && npm i && npm run build && cd ../dashboard && npm update ux-components",
     "preinstall": "npx force-resolutions",
-    "postinstall": "npm run patch-adaptivecards && npm run link-ace-ux",
+    "postinstall": "npm run patch-adaptivecards",
     "analyze-bundle": "gulp serve -l --analyze --nobrowser"
   },
   "dependencies": {
