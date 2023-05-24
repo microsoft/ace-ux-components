@@ -1,4 +1,4 @@
-import { BaseViewWithComponents } from "ace-ux-components";
+import { BaseViewWithComponents } from "@microsoft/ace-ux-components";
 import { ComponentDisplayNames } from "../constants";
 import { ISampleComponentsAdaptiveCardExtensionState, SampleComponentData } from "../sampleComponentTypes";
 

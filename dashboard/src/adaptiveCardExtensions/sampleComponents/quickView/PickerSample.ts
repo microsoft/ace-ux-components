@@ -1,4 +1,4 @@
-import { createTemplate, ListItem, Picker, PickerProps } from "ace-ux-components";
+import { createTemplate, ListItem, Picker, PickerProps } from "@microsoft/ace-ux-components";
 import { ISPFxAdaptiveCard, ISubmitActionArguments } from "@microsoft/sp-adaptive-card-extension-base";
 import { ComponentDisplayNames } from "../constants";
 import { SampleComponentStateKeys } from "../sampleComponentTypes";

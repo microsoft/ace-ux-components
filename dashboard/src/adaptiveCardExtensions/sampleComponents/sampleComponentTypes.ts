@@ -1,4 +1,4 @@
-import { ListItem } from "ace-ux-components";
+import { ListItem } from "@microsoft/ace-ux-components";
 
 export enum SampleComponentStateKeys {
   SAMPLE_PICKER_LIST_DATA = "SAMPLE_PICKER_LIST_DATA",

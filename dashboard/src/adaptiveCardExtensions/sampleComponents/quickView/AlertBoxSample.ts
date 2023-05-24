@@ -1,4 +1,4 @@
-import { AlertBox, AlertType, createTemplate } from "ace-ux-components";
+import { AlertBox, AlertType, createTemplate } from "@microsoft/ace-ux-components";
 import { ISPFxAdaptiveCard } from "@microsoft/sp-adaptive-card-extension-base";
 import { ComponentDisplayNames, SampleComponentActionIds } from "../constants";
 import { SampleBaseQuickView } from "./SampleBaseQuickView";

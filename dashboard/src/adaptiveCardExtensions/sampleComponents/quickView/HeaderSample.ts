@@ -12,7 +12,7 @@ import {
   PickerProps,
   Spacing,
   TextBlock,
-} from "ace-ux-components";
+} from "@microsoft/ace-ux-components";
 import { ComponentDisplayNames } from "../constants";
 import { ISampleComponentsAdaptiveCardExtensionState, SampleComponentStateKeys } from "../sampleComponentTypes";
 import { SampleBaseQuickView } from "./SampleBaseQuickView";

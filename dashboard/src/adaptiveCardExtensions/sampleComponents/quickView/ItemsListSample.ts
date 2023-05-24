@@ -9,7 +9,7 @@ import {
   ListType,
   Spacing,
   TextBlock,
-} from "ace-ux-components";
+} from "@microsoft/ace-ux-components";
 import { ISPFxAdaptiveCard } from "@microsoft/sp-adaptive-card-extension-base";
 import { PlusIcon } from "../../assets";
 import { ComponentDisplayNames } from "../constants";

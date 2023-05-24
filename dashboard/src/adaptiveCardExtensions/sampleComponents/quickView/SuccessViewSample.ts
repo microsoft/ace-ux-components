@@ -1,4 +1,4 @@
-import { createTemplate, Spacing, SuccessView, TextBlock } from "ace-ux-components";
+import { createTemplate, Spacing, SuccessView, TextBlock } from "@microsoft/ace-ux-components";
 import { ISPFxAdaptiveCard, ISubmitActionArguments } from "@microsoft/sp-adaptive-card-extension-base";
 import { ComponentDisplayNames } from "../constants";
 import { SampleBaseQuickView } from "./SampleBaseQuickView";

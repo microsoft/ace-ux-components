@@ -1,4 +1,4 @@
-import { createTemplate, ListType, SearchComponent } from "ace-ux-components";
+import { createTemplate, ListType, SearchComponent } from "@microsoft/ace-ux-components";
 import { ISPFxAdaptiveCard, ISubmitActionArguments } from "@microsoft/sp-adaptive-card-extension-base";
 import { ComponentDisplayNames } from "../constants";
 import { SampleBaseQuickView } from "./SampleBaseQuickView";

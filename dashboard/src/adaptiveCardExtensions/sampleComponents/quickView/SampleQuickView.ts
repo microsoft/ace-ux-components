@@ -1,4 +1,4 @@
-import { createTemplate, ItemsList, ItemsListProps, ListType } from "ace-ux-components";
+import { createTemplate, ItemsList, ItemsListProps, ListType } from "@microsoft/ace-ux-components";
 import {
   IActionArguments,
   ISPFxAdaptiveCard,

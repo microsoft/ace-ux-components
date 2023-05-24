@@ -1,4 +1,4 @@
-import { ActionStyle, createTemplate, InfoAlertBoxView } from "ace-ux-components";
+import { ActionStyle, createTemplate, InfoAlertBoxView } from "@microsoft/ace-ux-components";
 import { ISPFxAdaptiveCard } from "@microsoft/sp-adaptive-card-extension-base";
 import { SampleIcon } from "../../assets";
 import { ComponentDisplayNames } from "../constants";
