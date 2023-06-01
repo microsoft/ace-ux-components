@@ -37,7 +37,7 @@ The different components are more complex and are built using the elements menti
 | [Search bar](#search-bar)               | A text input along with a confirmation and cancellation button. Should be used to either search or filter.           |
 | [Search component](#search-component)   | An all-in-one component displaying the search bar and search results. The data must be passed to the component.      |
 | [Section list](#section-list)           | A component used to display multiple lists separated by sections.                                                    |
-| [Success view](#success-view)           | A container displaying an image with some text. Can optionally include a description and butt                        |
+| [Success view](#success-view)           | A container displaying an image with some text. Can optionally include a description and button.                     |
 | [Toggle row](#toggle-row)               | A container with Title, description and Input toggle with default value false.                                       |
 
 ---
