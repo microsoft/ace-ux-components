@@ -40,7 +40,8 @@ function personaTemplate(params: PersonaParams): BaseElement[] {
         new Image(imageUrl, `${EMPLOYEE_ALT_TEXT}${params.name}`)
           .setHorizontalAlignment(Alignment.Center)
           .setStyle(ImageStyle.Person)
-          .setWidth("50px"),
+          .setWidth("50px")
+          .setHeight("50px"),
       ]).setWidth("60px"),
       new Column([
         new TextBlock(params.name)
