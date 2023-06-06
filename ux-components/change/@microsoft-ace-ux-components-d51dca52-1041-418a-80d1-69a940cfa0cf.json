@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "accessibility fixes and package upgrade",
+  "packageName": "@microsoft/ace-ux-components",
+  "email": "animma@microsoft.com",
+  "dependentChangeType": "patch"
+}
