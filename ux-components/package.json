@@ -32,9 +32,9 @@
     "postinstall": "npm run patch-node-modules"
   },
   "dependencies": {
-    "@microsoft/sp-adaptive-card-extension-base": "1.17.0",
-    "@microsoft/sp-core-library": "1.17.0",
-    "@microsoft/sp-property-pane": "1.17.0",
+    "@microsoft/sp-adaptive-card-extension-base": "1.17.3",
+    "@microsoft/sp-core-library": "1.17.3",
+    "@microsoft/sp-property-pane": "1.17.3",
     "dayjs": "^1.11.1"
   },
   "devDependencies": {
@@ -42,9 +42,9 @@
     "@babel/preset-env": "^7.14.7",
     "@babel/preset-typescript": "^7.14.5",
     "@microsoft/rush-stack-compiler-4.5": "0.4.0",
-    "@microsoft/sp-build-web": "1.17.0",
-    "@microsoft/sp-module-interfaces": "1.17.0",
-    "@microsoft/sp-tslint-rules": "1.17.0",
+    "@microsoft/sp-build-web": "1.17.3",
+    "@microsoft/sp-module-interfaces": "1.17.3",
+    "@microsoft/sp-tslint-rules": "1.17.3",
     "@types/es6-promise": "^3.3.0",
     "@types/jest": "^26.0.24",
     "@types/jest-when": "^2.7.3",
