@@ -9,6 +9,7 @@ import {
   ActionSet,
   ActionStyle,
   ActionSubmit,
+  AssociatedInputs,
   BaseElement,
   Column,
   ColumnSet,
@@ -77,10 +78,12 @@ export class Header<TState = {}> extends Container {
    * @param text Text displayed on the button.
    * @returns Itself to enable method chaining.
    */
-  public withCallToAction(id: string, text: string): Header {
+  public withCallToAction(id: string, text: string, associatedInputs: AssociatedInputs = AssociatedInputs.Auto): Header {
     if (this.headerType === HeaderType.Basic) {
       (this.items[1] as ColumnSet).columns.push(
-        new Column([new ActionSet([new ActionSubmit(id, text, {}, text).setStyle(ActionStyle.Positive)])]).shrink()
+        new Column([new ActionSet([new ActionSubmit(id, text, {}, text)
+          .setAssociatedInputs(associatedInputs)
+          .setStyle(ActionStyle.Positive)])]).shrink()
       );
     }
 

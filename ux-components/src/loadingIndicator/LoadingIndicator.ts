@@ -18,7 +18,7 @@ export class LoadingIndicator extends Container {
 
   private generateItems(size: LoadingSize, focusID: string): void {
     this.sizes = this.getComponentSize(size);
-    this.items = [this.getImage(this.sizes.imageSize).setID(focusID)];
+    this.items = [this.getImage(this.sizes.imageSize, focusID)];
   }
 
   private getComponentSize(size: LoadingSize): { imageSize: string; fontSize: FontSize } {
@@ -32,11 +32,12 @@ export class LoadingIndicator extends Container {
     }
   }
 
-  private getImage(imageSize: string): Image {
+  private getImage(imageSize: string, focusID: string): Image {
     return new Image(LoadingSpinner, "Loading indicator")
       .setHorizontalAlignment(Alignment.Center)
       .setHeight(imageSize)
-      .setWidth(imageSize);
+      .setWidth(imageSize)
+      .setID(focusID) as Image;
   }
 
   public withLabel(label: string): LoadingIndicator {
