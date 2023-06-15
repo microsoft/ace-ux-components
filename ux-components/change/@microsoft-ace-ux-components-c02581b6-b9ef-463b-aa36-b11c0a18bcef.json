@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "run sync",
+  "packageName": "@microsoft/ace-ux-components",
+  "email": "kylemas@microsoft.com",
+  "dependentChangeType": "patch"
+}
