@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "dark theme changes",
+  "packageName": "@microsoft/ace-ux-components",
+  "email": "animma@microsoft.com",
+  "dependentChangeType": "patch"
+}
