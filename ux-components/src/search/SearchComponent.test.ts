@@ -3,6 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
+import { HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
 import { ItemsListProps, ListItem, ListType } from "../types";
 import { ItemsList } from "./../itemsList/ItemsList";
 import { SearchBar } from "./searchBar";
@@ -10,6 +11,7 @@ import { SearchBarProps } from "./searchBar/SearchBarProps.types";
 import { SearchComponent } from "./SearchComponent";
 import { SearchComponentProps } from "./SearchComponent.types";
 
+const testHostTheme: HostTheme = "light";
 describe("Search Component", () => {
   beforeEach(() => {
     jest.resetAllMocks();
@@ -26,6 +28,7 @@ const searchboxprops: SearchBarProps = {
   cancelButtonVisible: true,
   showSearchResultHeading: true,
   placeholder: "Search Input",
+  hostTheme: "light",
 };
 
 const selectedItem = {
@@ -46,6 +49,7 @@ const itemList: ItemsListProps = {
   nextPageId: "nextPage",
   previousPageId: "previousPage",
   startingIndex: 0,
+  hostTheme: testHostTheme,
 };
 
 const searchProps: SearchComponentProps = {

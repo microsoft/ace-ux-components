@@ -3,10 +3,13 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
+import { HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
 import { ActionSubmit, Alignment, ColumnSet, Container, FontColor, TextBlock } from "../elements";
 import { ItemsListProps, ListItem, ListType } from "../types";
 import { longListData } from "./constants";
 import { ItemsList } from "./ItemsList";
+
+const testHostTheme: HostTheme = "light";
 
 describe("Items list component", () => {
   const selectedItem = {
@@ -29,6 +32,7 @@ describe("Items list component", () => {
       previousPageId: "previousPage",
       startingIndex: 0,
       withChevron: true,
+      hostTheme: testHostTheme,
     };
 
     const itemsList = new ItemsList(props);
@@ -50,6 +54,7 @@ describe("Items list component", () => {
       previousPageId: "previousPage",
       selectedItem,
       startingIndex: 0,
+      hostTheme: testHostTheme,
     };
 
     const itemsList = new ItemsList(props);
@@ -70,6 +75,7 @@ describe("Items list component", () => {
       previousPageId: "previousPage",
       selectedItem,
       startingIndex: 0,
+      hostTheme: testHostTheme,
     };
 
     const itemsList = new ItemsList(props);
@@ -91,9 +97,11 @@ describe("Items list component", () => {
       personaProps: {
         actions: { alignment: Alignment.Left, actionElements: [new ActionSubmit("test", "Test")] },
         statusText: { icon: "testIcon", text: "Test text" },
+        hostTheme: testHostTheme,
       },
       startingIndex: 0,
       withChevron: true,
+      hostTheme: testHostTheme,
     };
 
     const itemsList = new ItemsList(props);
@@ -116,9 +124,11 @@ describe("Items list component", () => {
         actions: { alignment: Alignment.Right, actionElements: [new ActionSubmit("test", "Test")] },
         iconAction: { icon: "testIcon", actionElement: new ActionSubmit("test", "Test") },
         workStatus: { statusType: "Day", data: [{ displayIcon: "dayIcon", displayText: "Day text" }] },
+        hostTheme: testHostTheme,
       },
       selectedItem,
       startingIndex: 0,
+      hostTheme: testHostTheme,
     };
 
     const itemsList = new ItemsList(props);
@@ -139,9 +149,11 @@ describe("Items list component", () => {
       previousPageId: "previousPage",
       personaProps: {
         actions: { alignment: Alignment.Center, actionElements: [new ActionSubmit("test", "Test")] },
+        hostTheme: testHostTheme,
       },
       selectedItem,
       startingIndex: 0,
+      hostTheme: testHostTheme,
     };
 
     const itemsList = new ItemsList(props);
@@ -161,6 +173,7 @@ describe("Items list component", () => {
       nextPageId: "nextPage",
       previousPageId: "previousPage",
       startingIndex: 0,
+      hostTheme: testHostTheme,
     };
 
     const list = new ItemsList(props);
@@ -175,6 +188,7 @@ describe("Items list component", () => {
       nextPageId: "nextPage",
       previousPageId: "previousPage",
       startingIndex: 25,
+      hostTheme: testHostTheme,
     };
 
     const list = new ItemsList(props);

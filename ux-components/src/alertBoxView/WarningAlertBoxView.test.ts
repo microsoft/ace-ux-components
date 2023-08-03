@@ -1,10 +1,7 @@
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) Microsoft Corporation.
- *  Licensed under the MIT License. See License.txt in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
-
-import { WarningIcon } from "../assets";
+import { HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
 import { WarningAlertBoxView } from "./WarningAlertBoxView";
+
+const testHostTheme: HostTheme = "light";
 
 describe("AlertBox Component", () => {
   beforeEach(() => {
@@ -15,8 +12,10 @@ describe("AlertBox Component", () => {
   it("Should render warning message alert", () => {
     const alertContainer: any = new WarningAlertBoxView(
       "Warning message",
-      null,
+      testHostTheme,
       true,
+      null,
+      null,
       [{ actionId: "action", actionText: "Action", actionData: "actionData" }],
       "Title",
       true
@@ -27,8 +26,10 @@ describe("AlertBox Component", () => {
   it("Should render waarning message alert with custom icon", () => {
     const alertContainer: any = new WarningAlertBoxView(
       "warning message",
-      { iconName: WarningIcon },
-      false,
+      testHostTheme,
+      true,
+      null,
+      null,
       [{ actionId: "action", actionText: "Action", actionData: "actionData" }],
       "Title",
       true
@@ -39,8 +40,10 @@ describe("AlertBox Component", () => {
   it("Should render warning message alert with action button", () => {
     const alertContainer: any = new WarningAlertBoxView(
       "Success message",
-      { iconName: WarningIcon },
-      false,
+      testHostTheme,
+      true,
+      null,
+      null,
       [{ actionId: "action", actionText: "Action", actionData: "actionData" }],
       "Title"
     );

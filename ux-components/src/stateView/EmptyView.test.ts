@@ -3,6 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
+import { HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
 import { EMPTY_IMAGE_ALT_TEXT, LARGE_IMAGE_SIZE, SMALL_IMAGE_SIZE } from "./constants";
 import { EmptyView } from "./EmptyView";
 import { StateViewType } from "./StateView.types";
@@ -14,8 +15,10 @@ describe("EmptyView Component", () => {
   });
 });
 
+const testHostTheme: HostTheme = "light";
+
 const getTestEmptyView = (stateViewType: StateViewType = "Section"): EmptyView => {
-  return new EmptyView(stateViewType, "Test empty view");
+  return new EmptyView(stateViewType, "Test empty view", testHostTheme);
 };
 
 it("Should create state view component", () => {

@@ -23,6 +23,7 @@ const props: SearchBarProps = {
   cancelButtonVisible: true,
   showSearchResultHeading: true,
   placeholder: "Search Input",
+  hostTheme: "light",
 };
 
 it("Should create search Bar component", () => {

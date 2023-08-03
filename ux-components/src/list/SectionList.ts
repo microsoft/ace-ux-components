@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-import { ChevronDown, ChevronRight } from "../assets";
+import { HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
 import { ComplexComponent } from "../baseComponent/ComplexComponent";
 import {
   ActionSubmit,
@@ -18,19 +18,22 @@ import {
   Image,
   TextBlock,
 } from "../elements";
-import { ListKeys, NewListType, SectionListData } from "../types";
+import { IconName, IconProps, ListKeys, NewListType, SectionListData } from "../types";
 import { List } from "./List";
 import { ListActionID } from "./types";
+import { getIcon } from "../getIcon";
 
 export class SectionList extends ComplexComponent {
   private sectionListData: SectionListData[];
   private listType: NewListType;
+  private hostTheme: HostTheme;
 
-  constructor(componentID: string, listType: NewListType, sectionListData: SectionListData[]) {
+  constructor(componentID: string, listType: NewListType, sectionListData: SectionListData[], hostTheme: HostTheme) {
     super(componentID);
 
     this.listType = listType;
     this.sectionListData = sectionListData;
+    this.hostTheme = hostTheme;
     this.generateItems();
   }
 
@@ -49,7 +52,7 @@ export class SectionList extends ComplexComponent {
           .setStyle(ContainerStyle.Emphasis)
           .enableBleed()
           .stretch(),
-        new List(`${this.componentID}List${index}`, this.listType, listData, listKeys)
+        new List(`${this.componentID}List${index}`, this.listType, listData, listKeys, this.hostTheme)
       );
     }
 
@@ -85,17 +88,24 @@ export class SectionList extends ComplexComponent {
     for (let index = 0; index < this.items.length; index++) {
       const item = this.items[index];
       if (item instanceof ColumnSet) {
+        const iconPropsDown: IconProps = {
+          icon: IconName.ChevronDown,
+          altText: `Click here to collapse the list items for section ${index / 2}`,
+          height: "16px",
+          width: "16px",
+          hostTheme: this.hostTheme,
+        };
+        const iconPropRight: IconProps = {
+          icon: IconName.ChevronRight,
+          altText: `Click here to expand the list items for section ${index / 2}`,
+          height: "16px",
+          width: "16px",
+          hostTheme: this.hostTheme,
+        };
         item.columns.unshift(
           new Column([
-            new Image(ChevronDown, `Click here to collapse the list items for section ${index / 2}`)
-              .setHeight("16px")
-              .setWidth("16px")
-              .setID(`collapseImage${index}`),
-            new Image(ChevronRight, `Click here to expand the list items for section ${index / 2}`)
-              .setHeight("16px")
-              .setWidth("16px")
-              .setID(`expandImage${index}`)
-              .setIsVisible(false),
+            getIcon(iconPropsDown).setID(`collapseImage${index}`),
+            getIcon(iconPropRight).setID(`expandImage${index}`).setIsVisible(false),
           ])
             .setAction(
               new ActionToggleVisibility(`${ListActionID.ExpandCollapse}${index}`, "", [

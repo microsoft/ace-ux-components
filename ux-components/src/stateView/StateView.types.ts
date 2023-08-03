@@ -5,6 +5,8 @@
 
 export declare type StateViewType = "Full" | "Section";
 
+export declare type StateType = "Empty" | "Error" | "Success";
+
 export type StateViewButtonProps = {
   actionID: string;
   title: string;

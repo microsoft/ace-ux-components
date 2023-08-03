@@ -1,18 +1,15 @@
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) Microsoft Corporation.
- *  Licensed under the MIT License. See License.txt in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
-
 import { AlertBoxStateView } from "./AlertBoxStateView";
-import { AlertIcon, AlertViewAction } from "./AlertBoxStateView.types";
-import { SuccessAlertIcon } from "../assets";
+import { AlertBoxIconSize, AlertIcon, AlertViewAction } from "./AlertBoxStateView.types";
 import { ContainerStyle } from "../elements";
+import { HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
 
 export class SuccessAlertBoxView extends AlertBoxStateView {
   constructor(
     message: string,
-    icon?: AlertIcon,
-    showDefaultIcon?: boolean,
+    hostTheme: HostTheme,
+    useDefaultIcon: boolean,
+    iconURL?: string,
+    iconSize?: AlertBoxIconSize,
     alertAction?: AlertViewAction[] | null | undefined,
     title?: string,
     showActionAtFooter?: boolean
@@ -20,7 +17,11 @@ export class SuccessAlertBoxView extends AlertBoxStateView {
     super(
       ContainerStyle.Good,
       message,
-      showDefaultIcon ? { iconName: SuccessAlertIcon } : icon,
+      hostTheme,
+      "Success",
+      useDefaultIcon,
+      iconURL ? iconURL : null,
+      iconSize,
       alertAction,
       title,
       showActionAtFooter

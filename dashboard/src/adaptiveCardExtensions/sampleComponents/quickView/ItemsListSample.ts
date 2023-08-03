@@ -11,16 +11,12 @@ import {
   TextBlock,
 } from "ace-ux-components";
 import { ISPFxAdaptiveCard } from "@microsoft/sp-adaptive-card-extension-base";
-import { PlusIcon } from "../../assets";
 import { ComponentDisplayNames } from "../constants";
 import { SampleBaseQuickView } from "./SampleBaseQuickView";
 
 export class ItemsListSampleQuickView extends SampleBaseQuickView {
   public get title() {
     return ComponentDisplayNames.itemsList;
-  }
-  constructor() {
-    super();
   }
 
   private createTitleContainer(text: string) {
@@ -46,7 +42,10 @@ export class ItemsListSampleQuickView extends SampleBaseQuickView {
       previousPageId: "previousPage",
       startingIndex: 0,
       personaProps:
-        listType === ListType.PeopleList ? { statusText: { text: "StatusText", icon: PlusIcon } } : undefined,
+        listType === ListType.PeopleList
+          ? { statusText: { text: "StatusText", icon: "AddImage_dark" }, hostTheme: this.hostTheme }
+          : undefined,
+      hostTheme: this.hostTheme,
     };
     return new Container([this.createTitleContainer(listTitle), new ItemsList(props)]);
   }

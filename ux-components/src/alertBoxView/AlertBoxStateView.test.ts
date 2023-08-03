@@ -1,11 +1,8 @@
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) Microsoft Corporation.
- *  Licensed under the MIT License. See License.txt in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
-
 import { AlertBoxStateView } from "./AlertBoxStateView";
-import { ErrorAlertIcon, InfoIcon, SuccessAlertIcon, WarningIcon } from "../assets";
 import { ActionStyle, ContainerStyle } from "../elements";
+import { HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
+
+const testHostTheme: HostTheme = "light";
 
 describe("AlertBox Component", () => {
   beforeEach(() => {
@@ -17,7 +14,11 @@ describe("AlertBox Component", () => {
     const alertContainer: any = new AlertBoxStateView(
       ContainerStyle.Good,
       "Success message",
-      { iconName: SuccessAlertIcon },
+      testHostTheme,
+      "Success",
+      true,
+      null,
+      null,
       [{ actionId: "action", actionText: "Action", actionData: "actionData" }],
       "Title"
     );
@@ -39,7 +40,11 @@ describe("AlertBox Component", () => {
     const alertContainer: any = new AlertBoxStateView(
       ContainerStyle.Attention,
       "Error message",
-      { iconName: ErrorAlertIcon },
+      testHostTheme,
+      "Error",
+      true,
+      null,
+      null,
       [{ actionId: "action", actionText: "Action", actionData: "actionData" }],
       "Title"
     );
@@ -61,7 +66,11 @@ describe("AlertBox Component", () => {
     const alertContainer: any = new AlertBoxStateView(
       ContainerStyle.Accent,
       "Info message",
-      { iconName: InfoIcon },
+      testHostTheme,
+      "Info",
+      true,
+      null,
+      null,
       [{ actionId: "action", actionText: "Action", actionData: "actionData" }],
       "Title"
     );
@@ -83,7 +92,11 @@ describe("AlertBox Component", () => {
     const alertContainer: any = new AlertBoxStateView(
       ContainerStyle.Warning,
       "Warning message",
-      { iconName: WarningIcon },
+      testHostTheme,
+      "Warning",
+      true,
+      null,
+      null,
       [{ actionId: "action", actionText: "Action", actionData: "actionData" }],
       "Title"
     );
@@ -105,7 +118,11 @@ describe("AlertBox Component", () => {
     const alertContainer: any = new AlertBoxStateView(
       ContainerStyle.Good,
       "Success message",
-      { iconName: SuccessAlertIcon },
+      testHostTheme,
+      "Success",
+      true,
+      null,
+      null,
       [{ actionId: "action", actionText: "Action", actionData: "actionData", actionStyle: ActionStyle.Positive }],
       "Title"
     );
@@ -116,7 +133,11 @@ describe("AlertBox Component", () => {
     const alertContainer: any = new AlertBoxStateView(
       ContainerStyle.Good,
       "Success message",
-      { iconName: SuccessAlertIcon },
+      testHostTheme,
+      "Success",
+      true,
+      null,
+      null,
       [
         { actionId: "action", actionText: "Action", actionData: "actionData" },
         { actionId: "action1", actionText: "Action 2", actionData: "actionData2", actionStyle: ActionStyle.Positive },

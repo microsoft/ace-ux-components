@@ -4,12 +4,12 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { SUCCESS_IMAGE_ALT_TEXT } from "./constants";
-import { SuccessIcon, SuccessSectionIcon } from "../assets";
 import { StateView } from "./StateView";
 import { StateViewType } from "./StateView.types";
+import { HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
 
 export class SuccessView extends StateView {
-  constructor(stateViewType: StateViewType, header: string) {
-    super(stateViewType, header, SuccessIcon, SuccessSectionIcon, SUCCESS_IMAGE_ALT_TEXT);
+  constructor(stateViewType: StateViewType, header: string, hostTheme: HostTheme) {
+    super(stateViewType, header, SUCCESS_IMAGE_ALT_TEXT, "Success", hostTheme);
   }
 }

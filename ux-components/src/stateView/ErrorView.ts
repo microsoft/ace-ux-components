@@ -4,12 +4,12 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { ERROR_IMAGE_ALT_TEXT } from "./constants";
-import { ErrorIcon, ErrorSectionIcon } from "../assets";
 import { StateView } from "./StateView";
 import { StateViewType } from "./StateView.types";
+import { HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
 
 export class ErrorView extends StateView {
-  constructor(stateViewType: StateViewType, header: string) {
-    super(stateViewType, header, ErrorIcon, ErrorSectionIcon, ERROR_IMAGE_ALT_TEXT);
+  constructor(stateViewType: StateViewType, header: string, hostTheme: HostTheme) {
+    super(stateViewType, header, ERROR_IMAGE_ALT_TEXT, "Error", hostTheme);
   }
 }

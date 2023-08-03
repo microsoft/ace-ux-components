@@ -7,9 +7,7 @@ export class ToggleRowSampleQuickView extends SampleBaseQuickView {
   public get title() {
     return ComponentDisplayNames.toggleRow;
   }
-  constructor() {
-    super();
-  }
+
   public get template(): ISPFxAdaptiveCard {
     return createTemplate([
       new ToggleRow(

@@ -1,8 +1,3 @@
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) Microsoft Corporation.
- *  Licensed under the MIT License. See License.txt in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
-
 import {
   ActionSet,
   ActionSubmit,
@@ -10,21 +5,27 @@ import {
   ColumnSet,
   Container,
   ContainerStyle,
+  Image,
   FontWeight,
   RichTextBlock,
   Spacing,
   TextRun,
   VerticalAlignment,
-  Image,
 } from "../elements";
-import { DismissIcon } from "../assets";
 import { BaseElement } from "../elements/BaseElement";
-import { AlertIcon, AlertViewAction } from "./AlertBoxStateView.types";
+import { AlertBoxIconSize, AlertBoxStateType, AlertViewAction } from "./AlertBoxStateView.types";
+import { HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
+import { getIcon } from "../getIcon";
+import { IconName, IconProps } from "../types";
 
 const getItems = (
   backgroundColor: ContainerStyle,
   alertMessage: string,
-  icon?: AlertIcon,
+  hostTheme: HostTheme,
+  alertBoxType: AlertBoxStateType,
+  useDefaultIcon: boolean,
+  iconURL?: string,
+  iconSize?: AlertBoxIconSize,
   alertActions?: AlertViewAction[],
   title?: string,
   showActionAtFooter?: boolean
@@ -37,9 +38,14 @@ const getItems = (
   alertActionContainer.shrink().setSpacing(Spacing.Medium).setVerticalAlignment(VerticalAlignment.Center);
 
   const renderDismissIcon = () => {
-    alertActionContainer.items.push(
-      new Image(DismissIcon, "dismiss alert").setWidth("20px").setAction(new ActionSubmit("", ""))
-    );
+    const iconProps: IconProps = {
+      icon: IconName.DismissIcon,
+      height: "20px",
+      width: "20px",
+      altText: "dismiss alert",
+      hostTheme: hostTheme,
+    };
+    alertActionContainer.items.push(getIcon(iconProps).setAction(new ActionSubmit("", "")));
     if (showActionAtFooter) {
       alertActionContainer.setVerticalAlignment(VerticalAlignment.Top);
     }
@@ -76,15 +82,39 @@ const getItems = (
     descriptionContainer.inlines.push(new TextRun(alertMessage as string));
   }
 
-  if (icon) {
+  if (iconURL && !useDefaultIcon) {
+    // If a icon is passed to replace default icons
     alertIconContainer
       .shrink()
       .setSpacing(Spacing.Large)
       .setVerticalAlignment(VerticalAlignment.Center)
       .setIsVisible(true);
-    alertIconContainer.items.push(
-      new Image(icon.iconName, "alert icon").setWidth(icon.size === "medium" ? "48px" : "24px")
-    );
+    alertIconContainer.items.push(new Image(iconURL, "alert icon").setWidth(iconSize === "medium" ? "48px" : "24px"));
+  } else if (useDefaultIcon) {
+    // Case where an icon isn't passed and default(s) are being used.
+    // If iconURL is null and useDefaultIcon is false, then user does not want to display any icon.
+    const iconName: IconName =
+      alertBoxType === "Error"
+        ? IconName.ErrorIcon
+        : alertBoxType === "Info"
+        ? IconName.InfoFilled
+        : alertBoxType === "Success"
+        ? IconName.SuccessIcon
+        : IconName.WarningIcon;
+    const size: string = iconSize === "medium" ? "48px" : "24px";
+    const iconProps: IconProps = {
+      icon: iconName,
+      height: size,
+      width: size,
+      altText: "alert icon",
+      hostTheme: hostTheme,
+    };
+    alertIconContainer
+      .shrink()
+      .setSpacing(Spacing.Large)
+      .setVerticalAlignment(VerticalAlignment.Center)
+      .setIsVisible(true);
+    alertIconContainer.items.push(getIcon(iconProps));
   }
 
   return [
@@ -106,11 +136,28 @@ export class AlertBoxStateView extends Container {
   constructor(
     backgroundColor: ContainerStyle,
     alertMessage: string,
-    icon?: AlertIcon,
+    hostTheme: HostTheme,
+    alertBoxType: AlertBoxStateType,
+    useDefaultIcon: boolean,
+    icon?: string,
+    iconSize?: AlertBoxIconSize,
     alertActions?: AlertViewAction[],
     title?: string,
     showActionAtFooter?: boolean
   ) {
-    super(getItems(backgroundColor, alertMessage, icon, alertActions, title, showActionAtFooter));
+    super(
+      getItems(
+        backgroundColor,
+        alertMessage,
+        hostTheme,
+        alertBoxType,
+        useDefaultIcon,
+        icon,
+        iconSize,
+        alertActions,
+        title,
+        showActionAtFooter
+      )
+    );
   }
 }

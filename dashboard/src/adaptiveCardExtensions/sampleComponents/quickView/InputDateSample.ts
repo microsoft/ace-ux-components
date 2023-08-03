@@ -7,9 +7,7 @@ export class InputDateSampleQuickView extends SampleBaseQuickView {
   public get title() {
     return ComponentDisplayNames.inputDate;
   }
-  constructor() {
-    super();
-  }
+
   public get template(): ISPFxAdaptiveCard {
     return createTemplate([new InputDate("TEST", new Date())]);
   }

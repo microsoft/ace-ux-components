@@ -7,9 +7,7 @@ export class InputTimeSampleQuickView extends SampleBaseQuickView {
   public get title() {
     return ComponentDisplayNames.inputTime;
   }
-  constructor() {
-    super();
-  }
+
   public get template(): ISPFxAdaptiveCard {
     return createTemplate([new InputTime("TEST", "12:20").setPlaceholder("Placeholder")]);
   }

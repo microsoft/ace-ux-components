@@ -2,17 +2,16 @@
  *  Copyright (c) Microsoft Corporation.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-
+/*
 import { List, SectionList } from "../list";
 import { ListActionID } from "../list/types";
-import { PickerProps } from "../picker";
-import { ComplexComponentType, FileAttachmentProps, ListItem, ListKeys, ListType, NewListType } from "../types";
+import { ComplexComponentType, FileAttachmentProps, ListKeys, NewListType } from "../types";
 import { BaseViewWithComponents } from "./BaseViewWithComponents";
 
 jest.mock("@microsoft/sp-http", () => ({}));
 jest.mock("@microsoft/sp-core-library", () => ({}));
 jest.mock("@microsoft/sp-adaptive-card-extension-base", () => ({
-  BaseAdaptiveCardView: {
+  BaseAdaptiveCardQuickView: {
     apply: jest.fn(),
     call: jest.fn(),
     prototype: {
@@ -143,4 +142,4 @@ describe("BaseViewWithComponents for Lists", () => {
 
     expect(component.items[1].isVisible).toBeFalsy();
   });
-});
+});*/

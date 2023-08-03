@@ -3,9 +3,8 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-import { QuickViewNavigator, BaseAdaptiveCardView } from "@microsoft/sp-adaptive-card-extension-base";
+import { QuickViewNavigator, BaseAdaptiveCardQuickView, HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
 import { isEqual } from "@microsoft/sp-lodash-subset";
-import { ChevronLeft, ChevronLeftDisabled, ChevronRight, ChevronRightDisabled } from "../assets";
 import {
   ActionSubmit,
   Alignment,
@@ -16,12 +15,20 @@ import {
   FontColor,
   FontSize,
   FontWeight,
-  Image,
   Spacing,
   TextBlock,
 } from "../elements";
 import { Persona, PersonaParams } from "../persona";
-import { ComponentProps, ItemsListPersonaProps, ItemsListProps, ListItem, ListType } from "../types";
+import {
+  ComponentProps,
+  IconName,
+  IconProps,
+  ItemsListPersonaProps,
+  ItemsListProps,
+  ListItem,
+  ListType,
+} from "../types";
+import { getIcon } from "../getIcon";
 
 export const PAGINATION_SKIP: number = 25;
 
@@ -32,6 +39,7 @@ export class ItemsList extends Container {
   private listType: ListType;
   private needsPagination: boolean;
   private nextPageId: string;
+  private hostTheme: HostTheme;
   private personaProps?: ItemsListPersonaProps;
   private previousPageId: string;
   private selectedItem?: ListItem;
@@ -47,10 +55,18 @@ export class ItemsList extends Container {
     this.personaProps = props.personaProps;
     this.previousPageId = props.previousPageId;
     this.selectedItem = props.selectedItem;
+    this.hostTheme = props.hostTheme;
     this.chevron = props.withChevron
-      ? new Column([new Image(ChevronRightDisabled, "Chevron right").setHeight("20px").setWidth("20px")]).shrink()
+      ? new Column([
+          getIcon({
+            icon: IconName.ChevronRightDisabled,
+            altText: "Chevron right",
+            height: "20px",
+            width: "20px",
+            hostTheme: this.hostTheme,
+          }),
+        ]).shrink()
       : null;
-
     this.items = this.generateItems(props.startingIndex ? props.startingIndex : 0);
   }
 
@@ -87,15 +103,23 @@ export class ItemsList extends Container {
       const isFirstPage = start === 0;
       const isLastPage = end === this.listData.length;
 
+      const iconPropsLeft: IconProps = {
+        icon: isFirstPage ? IconName.ChevronLeftDisabled : IconName.ChevronLeft,
+        altText: "Left arrow",
+        hostTheme: this.hostTheme,
+      };
+
+      const iconPropsRight: IconProps = {
+        icon: isLastPage ? IconName.ChevronRightDisabled : IconName.ChevronRight,
+        altText: "Right arrow",
+        hostTheme: this.hostTheme,
+      };
+
       const paginationSection: ColumnSet = new ColumnSet([
         new Column([]).stretch(),
-        new Column([
-          new Image(isFirstPage ? ChevronLeftDisabled : ChevronLeft, "Left arrow").setHeight("24px").setWidth("24px"),
-        ]).shrink(),
+        new Column([getIcon(iconPropsLeft)]).shrink(),
         new Column([new TextBlock(`${start + 1}-${end}`)]).shrink(),
-        new Column([
-          new Image(isLastPage ? ChevronRightDisabled : ChevronRight, "Right arrow").setHeight("24px").setWidth("24px"),
-        ]).shrink(),
+        new Column([getIcon(iconPropsRight)]).shrink(),
         new Column([]).stretch(),
       ]);
 
@@ -160,7 +184,7 @@ export class ItemsList extends Container {
     const persona = new Persona(personaParams);
 
     if (this.chevron) {
-      persona.withChevron();
+      persona.withChevron(personaProps.hostTheme);
     }
 
     if (dataItem.subtitle) {
@@ -199,7 +223,7 @@ export class ItemsList extends Container {
     return persona;
   }
 
-  action(quickViewNavigator: QuickViewNavigator<BaseAdaptiveCardView<{}, {}, {}>>): void {
+  action(quickViewNavigator: QuickViewNavigator<BaseAdaptiveCardQuickView<{}, {}, {}>>): void {
     // This method comes from IBaseComponent. It's not being used for this component so we'll leave it unimplemented.
   }
 

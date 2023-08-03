@@ -3,6 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
+import { HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
 import { ERROR_IMAGE_ALT_TEXT, LARGE_IMAGE_SIZE, SMALL_IMAGE_SIZE } from "./constants";
 import { ErrorView } from "./ErrorView";
 import { StateViewType } from "./StateView.types";
@@ -14,8 +15,10 @@ describe("ErrorView Component", () => {
   });
 });
 
+const testHostTheme: HostTheme = "light";
+
 const getTestErrorView = (stateViewType: StateViewType = "Section"): ErrorView => {
-  return new ErrorView(stateViewType, "Test error view");
+  return new ErrorView(stateViewType, "Test error view", testHostTheme);
 };
 
 it("Should create state view component", () => {

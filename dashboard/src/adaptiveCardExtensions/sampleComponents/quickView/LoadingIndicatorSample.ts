@@ -7,14 +7,11 @@ export class LoadingIndicatorSampleQuickView extends SampleBaseQuickView {
   public get title() {
     return ComponentDisplayNames.loadingIndicator;
   }
-  constructor() {
-    super();
-  }
 
   public get template(): ISPFxAdaptiveCard {
     return createTemplate([
-      new LoadingIndicator(LoadingSize.Medium).withLabel("Loading..."),
-      new LoadingIndicator(LoadingSize.Large).withLabel("Loading..."),
+      new LoadingIndicator(LoadingSize.Medium, this.hostTheme).withLabel("Loading..."),
+      new LoadingIndicator(LoadingSize.Large, this.hostTheme).withLabel("Loading..."),
     ]);
   }
 }

@@ -28,6 +28,7 @@ export enum SampleComponentIds {
   SAMPLE_SUCCESS_VIEW = "SampleSuccessView",
   SAMPLE_TOGGLE_ROW_VIEW = "SampleToggleRowView",
   SAMPLE_WEEK_CALENDAR_VIEW = "SampleWeekCalendarView",
+  ICON_LIST_VIEW = "IconListView",
 }
 
 export enum ComponentDisplayNames {
@@ -54,6 +55,7 @@ export enum ComponentDisplayNames {
   successView = "Success View",
   toggleRow = "Toggle Row",
   weekCalendar = "Week Calendar",
+  iconList = "Icons",
 }
 
 export enum SampleComponentActionIds {
@@ -82,6 +84,7 @@ export const sampleComponentsList: ListItem[] = [
   { name: ComponentDisplayNames.search, id: SampleComponentIds.SAMPLE_SEARCH_VIEW },
   { name: ComponentDisplayNames.successView, id: SampleComponentIds.SAMPLE_SUCCESS_VIEW },
   { name: ComponentDisplayNames.toggleRow, id: SampleComponentIds.SAMPLE_TOGGLE_ROW_VIEW },
+  { name: ComponentDisplayNames.iconList, id: SampleComponentIds.ICON_LIST_VIEW },
 ];
 
 export const samplePickerItems: ListItem[] = [

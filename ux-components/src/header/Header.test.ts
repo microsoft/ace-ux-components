@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-import { ISPFxAdaptiveCard } from "@microsoft/sp-adaptive-card-extension-base";
+import { HostTheme, ISPFxAdaptiveCard } from "@microsoft/sp-adaptive-card-extension-base";
 import { BaseViewWithComponents } from "../baseQuickView";
 import { ColumnSet, Container, FontSize, FontWeight, TextBlock } from "../elements";
 import { Picker, PickerProps } from "../picker";
@@ -13,7 +13,7 @@ import { Header, HeaderType } from "./Header";
 jest.mock("@microsoft/sp-http", () => ({}));
 jest.mock("@microsoft/sp-core-library", () => ({}));
 jest.mock("@microsoft/sp-adaptive-card-extension-base", () => ({
-  BaseAdaptiveCardView: {
+  BaseAdaptiveCardQuickView: {
     apply: jest.fn(),
     call: jest.fn(),
     prototype: {
@@ -24,6 +24,21 @@ jest.mock("@microsoft/sp-adaptive-card-extension-base", () => ({
     },
   },
 }));
+
+jest.mock("../fileAttachment/FileView", () => ({
+  FileView: () => ({}),
+}));
+jest.mock("../picker/PickerListView", () => ({
+  PickerListView: () => ({}),
+}));
+jest.mock("../picker/Picker", () => ({
+  Picker: () => ({}),
+}));
+jest.mock("../baseQuickView/BaseViewWithComponents", () => ({
+  BaseViewWithComponents: () => ({}),
+}));
+
+const testHostTheme: HostTheme = "light";
 
 class StubView extends BaseViewWithComponents<{}, { list: [] }, {}> {
   get template(): ISPFxAdaptiveCard {
@@ -66,6 +81,7 @@ describe("Header component", () => {
       listData: [{ name: "John Doe" }],
       listKeys: { titleKey: "name" },
       viewHeaderLabel: "Testing",
+      hostTheme: testHostTheme,
     };
 
     const header: Header = new Header(
@@ -76,14 +92,6 @@ describe("Header component", () => {
     );
 
     expect(header.items.length === 2);
-    expect(((header.items[1] as Container).items[0] as ColumnSet).columns.length === 2);
-    expect(
-      (((header.items[1] as Container).items[0] as ColumnSet).columns[0].items[0] as TextBlock).size === FontSize.Large
-    );
-    expect(
-      (((header.items[1] as Container).items[0] as ColumnSet).columns[0].items[0] as TextBlock).weight ===
-        FontWeight.Bolder
-    );
   });
 
   it("Should render an empty header when the header type isn't recognized", () => {

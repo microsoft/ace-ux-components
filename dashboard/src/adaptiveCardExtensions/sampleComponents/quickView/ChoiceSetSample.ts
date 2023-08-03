@@ -7,9 +7,7 @@ export class ChoiceSetSampleQuickView extends SampleBaseQuickView {
   public get title() {
     return ComponentDisplayNames.choiceSet;
   }
-  constructor() {
-    super();
-  }
+
   public get template(): ISPFxAdaptiveCard {
     return createTemplate([
       new ChoiceSet(

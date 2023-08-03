@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-import { BaseAdaptiveCardView, ISubmitActionArguments } from "@microsoft/sp-adaptive-card-extension-base";
+import { BaseAdaptiveCardQuickView, ISubmitActionArguments } from "@microsoft/sp-adaptive-card-extension-base";
 import { IBaseComponent } from "../baseComponent";
 import { ComplexComponent } from "../baseComponent/ComplexComponent";
 import { FileAttachment } from "../fileAttachment";
@@ -12,7 +12,7 @@ import { ListActionID } from "../list/types";
 import { OPEN_PICKER_VIEW, Picker } from "../picker";
 import { ComplexComponentType, ComponentProps, FileAttachmentProps } from "../types";
 
-export abstract class BaseViewWithComponents<TProps, TState, TData> extends BaseAdaptiveCardView<
+export abstract class BaseViewWithComponents<TProps, TState, TData> extends BaseAdaptiveCardQuickView<
   TProps,
   TState,
   TData
@@ -24,7 +24,7 @@ export abstract class BaseViewWithComponents<TProps, TState, TData> extends Base
   public onAction(action: ISubmitActionArguments): void {
     const { data } = action;
     if (this.registeredComponentsLegacy[data.id]) {
-      this.registeredComponentsLegacy[data.id].action(this.quickViewNavigator);
+      this.registeredComponentsLegacy[data.id].action(this.quickViewNavigator as any);
     }
 
     if (data.id.includes(ListActionID.NextPage)) {
@@ -42,7 +42,7 @@ export abstract class BaseViewWithComponents<TProps, TState, TData> extends Base
       this.setState({});
     } else if (data.id.includes(OPEN_PICKER_VIEW)) {
       const picker: Picker<TState> = this.components[data.componentID] as Picker<TState>;
-      picker.openView(this.quickViewNavigator, this.callbacks[data.componentID]);
+      picker.openView(this.quickViewNavigator as any, this.callbacks[data.componentID]);
     }
   }
 
@@ -100,7 +100,7 @@ export abstract class BaseViewWithComponents<TProps, TState, TData> extends Base
   private getComponent(componentType: ComplexComponentType, props: ComponentProps): IBaseComponent {
     switch (componentType) {
       case ComplexComponentType.FileAttachment:
-        return new FileAttachment(props as FileAttachmentProps, this.quickViewNavigator);
+        return new FileAttachment(props as FileAttachmentProps, this.quickViewNavigator as any);
       default:
         throw new Error("Component type doesn't exist.");
     }

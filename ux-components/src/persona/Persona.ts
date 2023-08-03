@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-import { ChevronRightDisabled } from "../assets";
+import { getIcon } from "../getIcon";
 import {
   ActionSet,
   Alignment,
@@ -25,6 +25,8 @@ import {
 import { BaseActionElement } from "../elements/BaseActionElement";
 import { CHEVRON_RIGHT, EMPLOYEE_ALT_TEXT, LOCATION_STATUS_ICON, STATUS_ICON } from "./constants";
 import { CalendarStatusType, PersonaParams, WorkStatus } from "./Persona.type";
+import { IconName } from "../types";
+import { HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
 
 function createInitialsImage(name: string) {
   const namesArray = name?.split(" ");
@@ -77,9 +79,15 @@ export class Persona extends Container {
     return this;
   }
 
-  public withChevron(): Persona {
+  public withChevron(hostTheme: HostTheme): Persona {
     const chevron = new Column([
-      new Image(ChevronRightDisabled, CHEVRON_RIGHT).setHeight("20px").setWidth("20px"),
+      getIcon({
+        icon: IconName.ChevronRightDisabled,
+        hostTheme: hostTheme,
+        height: "20px",
+        width: "20px",
+        altText: CHEVRON_RIGHT,
+      }),
     ]).shrink();
     (this.items[0] as ColumnSet).columns.push(chevron);
     return this;

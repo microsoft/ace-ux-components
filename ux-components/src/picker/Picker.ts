@@ -3,13 +3,13 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-import { BaseAdaptiveCardView, QuickViewNavigator } from "@microsoft/sp-adaptive-card-extension-base";
-import { ChevronRight } from "../assets";
+import { BaseAdaptiveCardQuickView, HostTheme, QuickViewNavigator } from "@microsoft/sp-adaptive-card-extension-base";
 import { ComplexComponent } from "../baseComponent/ComplexComponent";
 import { ActionSubmit, Column, ColumnSet, ElementType, FontSize, FontWeight, Image, TextBlock } from "../elements";
-import { ListKeys, SectionListData } from "../types";
+import { IconName, IconProps, ListKeys, SectionListData } from "../types";
 import { ListOptions, SectionOptions } from "./PickerHelpers";
 import { PickerListView, ViewProps } from "./PickerListView";
+import { getIcon } from "../getIcon";
 
 export type PickerProps = {
   accessibilityLabel: string;
@@ -18,6 +18,7 @@ export type PickerProps = {
   listData: unknown[];
   listKeys: ListKeys;
   viewHeaderLabel: string;
+  hostTheme: HostTheme;
   foucsID?: string;
 };
 
@@ -36,6 +37,7 @@ export class Picker<TState> extends ComplexComponent {
   private selectedIndex: number;
   private viewHeaderLabel: string;
   private foucsID: string;
+  private hostTheme: HostTheme;
 
   constructor(componentID: string, props: PickerProps) {
     super(componentID);
@@ -52,6 +54,7 @@ export class Picker<TState> extends ComplexComponent {
     this.selectedIndex = -1;
     this.viewHeaderLabel = props.viewHeaderLabel;
     this.foucsID = props.foucsID;
+    this.hostTheme = props.hostTheme;
 
     this.setMinHeight("30px");
     this.useSeparator(!props.isHeader);
@@ -66,10 +69,18 @@ export class Picker<TState> extends ComplexComponent {
       textBlock.setSize(FontSize.Large).setWeight(FontWeight.Bolder);
     }
 
+    const iconProps: IconProps = {
+      icon: IconName.ChevronRight,
+      height: "16px",
+      width: "16px",
+      altText: "Chevron right",
+      hostTheme: this.hostTheme,
+    };
+
     this.items = [
       new ColumnSet([
         new Column([textBlock.setID(this.foucsID)]).stretch(),
-        new Column([new Image(ChevronRight, "Chevron right").setHeight("16px").setWidth("16px")]).shrink(),
+        new Column([getIcon(iconProps)]).shrink(),
       ]).setAction(
         new ActionSubmit(
           `${OPEN_PICKER_VIEW}-${this.componentID}`,
@@ -82,7 +93,7 @@ export class Picker<TState> extends ComplexComponent {
   }
 
   public openView(
-    quickViewNavigator: QuickViewNavigator<BaseAdaptiveCardView<{}, TState, {}>>,
+    quickViewNavigator: QuickViewNavigator<BaseAdaptiveCardQuickView<{}, TState, {}>>,
     itemSelectionCallback: (item: unknown) => void
   ): void {
     const viewID: string = `${this.componentID}-view`;
@@ -98,6 +109,7 @@ export class Picker<TState> extends ComplexComponent {
       sectionListOptions: this.sectionListOptions,
       selectedIndex: this.selectedIndex,
       withFilter: this.filterPlaceholder !== "",
+      hostTheme: this.hostTheme,
     };
 
     quickViewNavigator.register(viewID, () => new PickerListView<TState>(viewProps));

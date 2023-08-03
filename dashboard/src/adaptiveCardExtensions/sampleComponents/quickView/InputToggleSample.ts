@@ -8,12 +8,7 @@ export class InputToggleSampleQuickView extends SampleBaseQuickView {
     return ComponentDisplayNames.inputToggle;
   }
 
-  constructor() {
-    super();
-  }
-
   public get template(): ISPFxAdaptiveCard {
-    //TODO: Why isn't this like. A boolean
     return createTemplate([
       new InputToggle("TEST", "STARTS FALSE INPUT TOGGLE", InputToggleValue.FALSE),
       new InputToggle("TEST2", "STARTS TRUE INPUT TOGGLE", InputToggleValue.TRUE),

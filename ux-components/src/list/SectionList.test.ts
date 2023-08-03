@@ -3,6 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
+import { HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
 import { ColumnSet, FontColor, FontSize, FontWeight, Image, TextBlock } from "../elements";
 import { NewListType } from "../types";
 import { sectionActionTexts, sectionListData } from "./constants";
@@ -10,11 +11,12 @@ import { List } from "./List";
 import { SectionList } from "./SectionList";
 import { ListActionID } from "./types";
 
+const testHostTheme: HostTheme = "light";
 describe("SectionList component", () => {
   let sectionList: SectionList;
   describe("Basic SectionList", () => {
     beforeEach(() => {
-      sectionList = new SectionList("basicList", NewListType.BasicList, sectionListData);
+      sectionList = new SectionList("basicList", NewListType.BasicList, sectionListData, testHostTheme);
     });
 
     it("Should generate the items properly", () => {
@@ -117,7 +119,7 @@ describe("SectionList component", () => {
 
   describe("Multiline SectionList", () => {
     beforeEach(() => {
-      sectionList = new SectionList("multilineList", NewListType.MultilineList, sectionListData);
+      sectionList = new SectionList("multilineList", NewListType.MultilineList, sectionListData, testHostTheme);
     });
 
     it("Should add a small icon to the left of the title of list items", () => {

@@ -8,9 +8,6 @@ export class PickerSampleQuickView extends SampleBaseQuickView {
   public get title() {
     return ComponentDisplayNames.picker;
   }
-  constructor() {
-    super();
-  }
 
   private createPicker(selectedItem?: ListItem) {
     const pickerProps: PickerProps = {
@@ -20,6 +17,7 @@ export class PickerSampleQuickView extends SampleBaseQuickView {
       listData: this.state[SampleComponentStateKeys.SAMPLE_PICKER_LIST_DATA],
       listKeys: { titleKey: "name" },
       viewHeaderLabel: "Sample View Header Text",
+      hostTheme: this.hostTheme,
     };
 
     return this.registerComponent(new Picker("samplePicker", pickerProps), this.selectItem.bind(this));
