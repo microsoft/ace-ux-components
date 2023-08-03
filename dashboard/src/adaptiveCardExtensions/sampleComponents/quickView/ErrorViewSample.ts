@@ -7,17 +7,14 @@ export class ErrorSampleQuickView extends SampleBaseQuickView {
   public get title() {
     return ComponentDisplayNames.errorView;
   }
-  constructor() {
-    super();
-  }
 
   public get template(): ISPFxAdaptiveCard {
     return createTemplate([
-      new ErrorView("Full", "Sample Error View Title - Full")
+      new ErrorView("Full", "Sample Error View Title - Full", this.hostTheme)
         .withDescription("Here is an optional description as well")
         .withButton({ title: "Optional Button", actionID: "1", altText: "Optional Button Alt Text" }),
 
-      new ErrorView("Section", "Sample Error View Title - Section")
+      new ErrorView("Section", "Sample Error View Title - Section", this.hostTheme)
         .withDescription("Here is an optional description as well")
         .withButton({ title: "Optional Button", actionID: "2", altText: "Optional Button Alt Text" })
         .setSpacing(Spacing.Medium),

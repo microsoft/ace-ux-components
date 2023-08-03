@@ -4,7 +4,8 @@
  *--------------------------------------------------------------------------------------------*/
 
 import {
-  BaseAdaptiveCardView,
+  BaseAdaptiveCardQuickView,
+  HostTheme,
   IFocusParameters,
   ISPFxAdaptiveCard,
   ISubmitActionArguments,
@@ -31,9 +32,10 @@ export type ViewProps = {
   sectionListOptions?: SectionOptions;
   selectedIndex: number;
   withFilter: boolean;
+  hostTheme: HostTheme;
 };
 
-export class PickerListView<TState> extends BaseAdaptiveCardView<{}, TState, {}> {
+export class PickerListView<TState> extends BaseAdaptiveCardQuickView<{}, TState, {}> {
   private readonly cancelFilterActionId: string;
   private readonly filterActionId: string;
   private readonly helpers: PickerHelpers;
@@ -46,6 +48,7 @@ export class PickerListView<TState> extends BaseAdaptiveCardView<{}, TState, {}>
   private props: ViewProps;
   private sectionListData: unknown[][];
   private selectedIndex: number;
+  private hostTheme: HostTheme;
 
   constructor(props: ViewProps) {
     super();
@@ -61,6 +64,7 @@ export class PickerListView<TState> extends BaseAdaptiveCardView<{}, TState, {}>
     this.sectionListData = [];
     this.selectedIndex = props.selectedIndex;
     this.focusID = this.titleHeading;
+    this.hostTheme = props.hostTheme;
   }
 
   public get template(): ISPFxAdaptiveCard {
@@ -75,6 +79,8 @@ export class PickerListView<TState> extends BaseAdaptiveCardView<{}, TState, {}>
       searchBoxSubmitButtonId: this.filterActionId,
       searchTextValue: this.listFilter,
       showSearchResultHeading: false,
+      hostTheme: this.hostTheme,
+      componentID: this.props.listComponentID,
     };
 
     let list: List | SectionList;
@@ -135,9 +141,13 @@ export class PickerListView<TState> extends BaseAdaptiveCardView<{}, TState, {}>
   private getList(): List {
     const { listComponentID, listKeys, listOptions } = this.props;
 
-    const list: List = new List(listComponentID, NewListType.BasicList, this.listData, listKeys).withSelectedItem(
-      this.selectedIndex !== -1 ? this.props.listData[this.selectedIndex] : undefined
-    );
+    const list: List = new List(
+      listComponentID,
+      NewListType.BasicList,
+      this.listData,
+      listKeys,
+      this.hostTheme
+    ).withSelectedItem(this.selectedIndex !== -1 ? this.props.listData[this.selectedIndex] : undefined);
 
     if (this.listsDictionary[listComponentID]) {
       const registeredList: List = this.listsDictionary[listComponentID] as List;
@@ -162,7 +172,12 @@ export class PickerListView<TState> extends BaseAdaptiveCardView<{}, TState, {}>
       });
     }
 
-    const sectionList: SectionList = new SectionList(listComponentID, NewListType.BasicList, filteredData);
+    const sectionList: SectionList = new SectionList(
+      listComponentID,
+      NewListType.BasicList,
+      filteredData,
+      this.hostTheme
+    );
 
     for (let index = 0; index < sectionList.items.length; index++) {
       const item = sectionList.items[index];
@@ -201,9 +216,11 @@ export class PickerListView<TState> extends BaseAdaptiveCardView<{}, TState, {}>
       this.props.itemSelectionCallback(data.selectedItem);
       this.setState({});
     } else if (id === this.filterActionId) {
+      const list: List = this.listsDictionary[data.componentID] as List;
       this.listFilter = data.listFilter ?? "";
       this.cancelButtonVisible = !!data.listFilter;
       this.focusID = "searchResults_textblock";
+      list.setStartIndex(0);
       this.setState({});
     } else if (id === this.cancelFilterActionId) {
       this.listFilter = "";

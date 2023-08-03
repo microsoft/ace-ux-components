@@ -8,9 +8,6 @@ export class SearchSampleQuickView extends SampleBaseQuickView {
   public get title() {
     return ComponentDisplayNames.search;
   }
-  constructor() {
-    super();
-  }
 
   public onAction(actionData: ISubmitActionArguments): void {
     super.onAction(actionData);
@@ -35,6 +32,7 @@ export class SearchSampleQuickView extends SampleBaseQuickView {
           showSearchResultHeading: true,
           searchBoxCancelButtonId: "SAMPLE_SEARCH_BOX_CANCEL_BUTTON_ID",
           searchTextValue: this.state.searchText,
+          hostTheme: this.hostTheme,
         },
         searchResult: {
           data: this.state.SAMPLE_SEARCH_LIST_DATA,
@@ -45,6 +43,7 @@ export class SearchSampleQuickView extends SampleBaseQuickView {
           actionId: "SAMPLE_SEARCH_ACTION_ID",
           selectedItem: this.state.SAMPLE_SEARCH_SELECTED_ITEM,
           withChevron: false,
+          hostTheme: this.hostTheme,
         },
       }),
     ]);

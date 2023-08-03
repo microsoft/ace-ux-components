@@ -4,9 +4,9 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { LARGE_IMAGE_SIZE, SMALL_IMAGE_SIZE } from "./constants";
-import { ErrorIcon, ErrorSectionIcon } from "../assets";
 import { StateView } from "./StateView";
 import { StateViewButtonProps, StateViewType } from "./StateView.types";
+import { HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
 
 describe("StateView Component", () => {
   beforeEach(() => {
@@ -19,6 +19,8 @@ const stateViewTitle = "test state title";
 const stateViewDesc = "test state description";
 const defaultAltText = "Error Alt Text";
 
+const testHostTheme: HostTheme = "light";
+
 const testAction: StateViewButtonProps = {
   actionID: "1",
   title: "Test Title",
@@ -26,7 +28,7 @@ const testAction: StateViewButtonProps = {
 };
 
 const getTestStateView = (stateViewType: StateViewType = "Section"): StateView => {
-  return new StateView(stateViewType, stateViewTitle, ErrorIcon, ErrorSectionIcon, defaultAltText);
+  return new StateView(stateViewType, stateViewTitle, defaultAltText, "Error", testHostTheme);
 };
 
 it("Should create state view component", () => {

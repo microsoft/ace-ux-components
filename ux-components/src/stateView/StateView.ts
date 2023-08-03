@@ -20,20 +20,49 @@ import {
   TextBlock,
   VerticalAlignment,
 } from "../elements";
-import { StateViewButtonProps, StateViewType } from "./StateView.types";
+import { StateViewButtonProps, StateType, StateViewType } from "./StateView.types";
+import { HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
+import { IconName, IconProps } from "../types";
+import { getIcon } from "../getIcon";
 
 const getItems = (
   stateViewType: StateViewType,
   header: string,
-  bigImage: string,
-  smallImage: string,
-  imageAltText: string
+  imageAltText: string,
+  stateType: StateType,
+  hostTheme: HostTheme
 ): BaseElement[] => {
   // Image template for Error View
-  const errorImage = new Image(stateViewType === "Full" ? bigImage : smallImage, imageAltText)
-    .setHorizontalAlignment(Alignment.Center)
-    .setHeight(stateViewType === "Full" ? LARGE_IMAGE_SIZE : SMALL_IMAGE_SIZE)
-    .setWidth(stateViewType === "Full" ? LARGE_IMAGE_SIZE : SMALL_IMAGE_SIZE);
+  const iconPropsSmall: IconProps = {
+    icon:
+      stateType === "Error"
+        ? IconName.ErrorSmallIllustration
+        : stateType === "Empty"
+        ? IconName.EmptySmallIllustration
+        : IconName.SuccessSmallIllustration,
+    height: SMALL_IMAGE_SIZE,
+    width: SMALL_IMAGE_SIZE,
+    altText: imageAltText,
+    hostTheme: hostTheme,
+  };
+
+  const iconPropsFull: IconProps = {
+    icon:
+      stateType === "Error"
+        ? IconName.ErrorIllustration
+        : stateType === "Empty"
+        ? IconName.EmptyIllustration
+        : IconName.SuccessIllustration,
+    height: LARGE_IMAGE_SIZE,
+    width: LARGE_IMAGE_SIZE,
+    altText: imageAltText,
+    hostTheme: hostTheme,
+  };
+
+  const errorImage =
+    stateViewType === "Full"
+      ? getIcon(iconPropsFull).setHorizontalAlignment(Alignment.Center)
+      : getIcon(iconPropsSmall).setHorizontalAlignment(Alignment.Center);
   const heading = new TextBlock(header)
     .setSize(FontSize.Medium)
     .setWeight(FontWeight.Bolder)
@@ -55,11 +84,11 @@ export class StateView extends Container {
   constructor(
     stateViewType: StateViewType,
     header: string,
-    bigImage: string,
-    smallImage: string,
-    imageAltText: string
+    imageAltText: string,
+    stateType: StateType,
+    hostTheme: HostTheme
   ) {
-    super(getItems(stateViewType, header, bigImage, smallImage, imageAltText));
+    super(getItems(stateViewType, header, imageAltText, stateType, hostTheme));
     this.stateViewType = stateViewType;
     if (stateViewType !== "Full") this.setStyle(ContainerStyle.Emphasis);
   }

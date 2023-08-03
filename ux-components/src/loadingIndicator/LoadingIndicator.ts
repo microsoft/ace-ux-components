@@ -3,16 +3,18 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-import { LoadingSpinner } from "../assets";
+import { HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
 import { Alignment, Container, FontSize, Image, TextBlock } from "../elements";
-import { LoadingSize, LOADING_ID } from "../types";
+import { LoadingSize, LOADING_ID, IconProps, IconName } from "../types";
+import { getIcon } from "../getIcon";
 
 export class LoadingIndicator extends Container {
   private sizes: { imageSize: string; fontSize: FontSize };
+  private hostTheme: HostTheme;
 
-  constructor(size: LoadingSize, focusID: string = LOADING_ID) {
+  constructor(size: LoadingSize, hostTheme: HostTheme, focusID: string = LOADING_ID) {
     super([]);
-
+    this.hostTheme = hostTheme;
     this.generateItems(size, focusID);
   }
 
@@ -33,11 +35,15 @@ export class LoadingIndicator extends Container {
   }
 
   private getImage(imageSize: string, focusID: string): Image {
-    return new Image(LoadingSpinner, "Loading indicator")
-      .setHorizontalAlignment(Alignment.Center)
-      .setHeight(imageSize)
-      .setWidth(imageSize)
-      .setID(focusID) as Image;
+    const iconProps: IconProps = {
+      icon: IconName.LoadingIcon,
+      hostTheme: this.hostTheme,
+      altText: "Loading indicator",
+      height: imageSize,
+      width: imageSize,
+    };
+
+    return getIcon(iconProps).setHorizontalAlignment(Alignment.Center);
   }
 
   public withLabel(label: string): LoadingIndicator {

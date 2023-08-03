@@ -8,10 +8,6 @@ import { sampleComponentsList } from "../constants";
 import { SampleBaseQuickView } from "./SampleBaseQuickView";
 
 export class SampleQuickView extends SampleBaseQuickView {
-  constructor() {
-    super();
-  }
-
   public get template(): ISPFxAdaptiveCard {
     const props: ItemsListProps = {
       actionId: "itemId",
@@ -21,6 +17,7 @@ export class SampleQuickView extends SampleBaseQuickView {
       previousPageId: "previousPage",
       startingIndex: 0,
       withChevron: true,
+      hostTheme: this.hostTheme,
     };
 
     return createTemplate([new ItemsList(props)]);

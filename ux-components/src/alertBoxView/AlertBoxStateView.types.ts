@@ -1,8 +1,3 @@
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) Microsoft Corporation.
- *  Licensed under the MIT License. See License.txt in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
-
 import { ActionStyle } from "../elements";
 
 export type AlertViewAction = {
@@ -16,3 +11,7 @@ export type AlertIcon = {
   iconName: string;
   size?: string;
 };
+
+export declare type AlertBoxIconSize = "small" | "medium";
+
+export declare type AlertBoxStateType = "Error" | "Info" | "Success" | "Warning";

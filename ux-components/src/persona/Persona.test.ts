@@ -3,10 +3,11 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-import { Provided } from "../assets";
+import { HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
 import { ActionStyle, ActionSubmit, CalendarType, ColumnSet, FontColor, Image, TextBlock } from "../elements";
 import { Persona } from "./Persona";
 import { PersonaParams, WorkStatus } from "./Persona.type";
+import { SuccessIcon_light } from "../assets";
 const personaParams: PersonaParams = {
   profilePictureUrl: "https://pbs.twimg.com/profile_images/3647943215/d7f12830b3c17a5a9e4afcc370e3a37e_400x400.jpeg",
   name: "Sirisha Bollapalli",
@@ -32,6 +33,8 @@ const mockActionData = new ActionSubmit("`${feedback?.PerspectiveId}`", "ViewDet
   feedback: "feedback",
   PerspectiveId: "${feedback?.PerspectiveId}",
 }).setStyle(ActionStyle.Default);
+
+const testHostTheme: HostTheme = "light";
 
 describe("Persona Component", () => {
   beforeEach(() => {
@@ -82,7 +85,10 @@ describe("Persona Component", () => {
   });
 
   it("Should contain Status Icon and Status Text", () => {
-    const personaContainer: Persona = new Persona(personaParams).withStatusText(Provided, "Provided May 16,2021");
+    const personaContainer: Persona = new Persona(personaParams).withStatusText(
+      SuccessIcon_light,
+      "Provided May 16,2021"
+    );
     expect(
       (((personaContainer.items[0] as ColumnSet).columns[1].items[1] as ColumnSet).columns[1].items[0] as TextBlock)
         .text
@@ -91,7 +97,7 @@ describe("Persona Component", () => {
 
   it("Should display Status Text in input Status text color", () => {
     const personaContainer: Persona = new Persona(personaParams).withStatusText(
-      Provided,
+      SuccessIcon_light,
       "Provided May 16,2021",
       FontColor.Good
     );
@@ -143,7 +149,7 @@ describe("Persona Component", () => {
   });
 
   it("Should display the Chevron Icon", () => {
-    const personaContainer: Persona = new Persona(personaParams).withChevron();
+    const personaContainer: Persona = new Persona(personaParams).withChevron(testHostTheme);
 
     const chevronImage: Image = (personaContainer.items[0] as ColumnSet).columns[2].items[0] as Image;
     expect(chevronImage.type).toEqual("Image");

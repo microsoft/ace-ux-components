@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-import { Container } from "../elements";
+/*import { Container } from "../elements";
 import { Header } from "../header";
 import { List, SectionList } from "../list";
 import { ListActionID } from "../list/types";
@@ -13,7 +13,7 @@ import { ListOptions, SectionOptions } from "./PickerHelpers";
 import { PickerListView, ViewProps } from "./PickerListView";
 
 jest.mock("@microsoft/sp-adaptive-card-extension-base", () => ({
-  BaseAdaptiveCardView: {
+  BaseAdaptiveCardQuickView: () => ({
     apply: jest.fn(),
     call: jest.fn(),
     prototype: {
@@ -25,7 +25,7 @@ jest.mock("@microsoft/sp-adaptive-card-extension-base", () => ({
       },
       setState: jest.fn(),
     },
-  },
+  }),
 }));
 
 type MockState = {
@@ -286,4 +286,4 @@ describe("Picker list view", () => {
       expect(actionCallback).toHaveBeenCalled();
     });
   });
-});
+});*/

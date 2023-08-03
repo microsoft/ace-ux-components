@@ -21,3 +21,4 @@ export * from "./SearchSample";
 export * from "./SuccessViewSample";
 export * from "./ToggleRowSample";
 export * from "./WeekCalendarSample";
+export * from "./IconListView";

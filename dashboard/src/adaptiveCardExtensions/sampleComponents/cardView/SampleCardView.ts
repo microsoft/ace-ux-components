@@ -1,10 +1,10 @@
 import strings from "SampleComponentsAdaptiveCardExtensionStrings";
+import { AceRenderType } from "ace-ux-components";
 import {
   BasePrimaryTextCardView,
   IPrimaryTextCardParameters,
   IQuickViewCardAction,
 } from "@microsoft/sp-adaptive-card-extension-base";
-import { AceRenderType } from "ace-ux-components";
 import { SampleComponentIds } from "../constants";
 import { ISampleComponentsAdaptiveCardExtensionState } from "../sampleComponentTypes";
 

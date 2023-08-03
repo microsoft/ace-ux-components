@@ -7,9 +7,6 @@ export class PersonaSampleQuickView extends SampleBaseQuickView {
   public get title() {
     return ComponentDisplayNames.persona;
   }
-  constructor() {
-    super();
-  }
 
   public get template(): ISPFxAdaptiveCard {
     return createTemplate([

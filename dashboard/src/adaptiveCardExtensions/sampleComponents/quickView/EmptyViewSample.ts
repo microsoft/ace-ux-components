@@ -7,16 +7,13 @@ export class EmptySampleQuickView extends SampleBaseQuickView {
   public get title() {
     return ComponentDisplayNames.emptyView;
   }
-  constructor() {
-    super();
-  }
 
   public get template(): ISPFxAdaptiveCard {
     return createTemplate([
-      new EmptyView("Full", "Sample Empty View Title - Full")
+      new EmptyView("Full", "Sample Empty View Title - Full", this.hostTheme)
         .withDescription("Here is an optional description as well")
         .withButton({ title: "Optional Button", actionID: "1", altText: "Optional Button Alt Text" }),
-      new EmptyView("Section", "Sample Empty View Title - Section")
+      new EmptyView("Section", "Sample Empty View Title - Section", this.hostTheme)
         .withDescription("Here is an optional description as well")
         .withButton({ title: "Optional Button", actionID: "2", altText: "Optional Button Alt Text" })
         .setSpacing(Spacing.Medium),

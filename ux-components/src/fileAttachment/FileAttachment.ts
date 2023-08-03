@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-import { BaseAdaptiveCardView, QuickViewNavigator } from "@microsoft/sp-adaptive-card-extension-base";
+import { BaseAdaptiveCardQuickView, HostTheme, QuickViewNavigator } from "@microsoft/sp-adaptive-card-extension-base";
 import {
   ActionSubmit,
   ActionSet,
@@ -18,10 +18,10 @@ import {
   ActionStyle,
 } from "../elements";
 import { Alignment, ContainerStyle, FontColor, Spacing } from "../elements/Schema.types";
-import { Annotation, AnnotationSimple, FileAttachmentProps, MediaType } from "../types";
+import { Annotation, AnnotationSimple, FileAttachmentProps, IconName, MediaType } from "../types";
 import { FileView } from "./FileView";
 import { IBaseComponent } from "../baseComponent/IBaseComponent";
-import { Vector, ImageIcon, DismissIcon, FileIcon } from "../assets";
+import { getIcon } from "../getIcon";
 
 export class FileAttachment<TProps, TState> extends Container implements IBaseComponent {
   public readonly actionId: string;
@@ -35,13 +35,22 @@ export class FileAttachment<TProps, TState> extends Container implements IBaseCo
    */
   constructor(
     props: FileAttachmentProps,
-    quickViewNavigator: QuickViewNavigator<BaseAdaptiveCardView<TProps, TState, {}>>
+    quickViewNavigator: QuickViewNavigator<BaseAdaptiveCardQuickView<TProps, TState, {}>>
   ) {
     super([]);
-    this.items = this.getFiles(props.filesList, props.maxSize, props.isFileTooLarge, props.maxSizeExceededMessage);
+    this.items = this.getFiles(
+      props.filesList,
+      props.maxSize,
+      props.isFileTooLarge,
+      props.maxSizeExceededMessage,
+      props.hostTheme
+    );
     this.filesListLength = props.filesList.length;
 
-    quickViewNavigator.register(props.id, () => new FileView<TProps, TState>(props.selectedFileStateKey));
+    quickViewNavigator.register(
+      props.id,
+      () => new FileView<TProps, TState>(props.selectedFileStateKey, props.hostTheme)
+    );
     this.actionId = props.id;
   }
 
@@ -49,7 +58,8 @@ export class FileAttachment<TProps, TState> extends Container implements IBaseCo
     filesList: (AnnotationSimple | Annotation)[],
     maxSize: number,
     isFileTooLarge: boolean,
-    maxSizeExceededMessage: string
+    maxSizeExceededMessage: string,
+    hostTheme: HostTheme
   ): BaseElement[] {
     const attachmentListContainer: ColumnSet[] =
       filesList.length > 0
@@ -59,18 +69,23 @@ export class FileAttachment<TProps, TState> extends Container implements IBaseCo
                 new Column([
                   new ColumnSet([
                     new Column([
-                      this.getImage(
-                        // Checks if the uploaded file is a PDF
-                        item.filename.slice(item.filename.length - 4, item.filename.length) === ".pdf"
-                          ? FileIcon
-                          : (item as AnnotationSimple).base64Uri
-                          ? (item as AnnotationSimple).base64Uri
-                          : (item as Annotation).mimetype
-                          ? (item as Annotation).mimetype
-                          : ImageIcon,
-                        "32px",
-                        "32px"
-                      ).setWidth("30px"),
+                      item.filename.slice(item.filename.length - 4, item.filename.length) === ".pdf"
+                        ? getIcon({
+                            icon: IconName.FileIcon,
+                            height: "32px",
+                            width: "32px",
+                            hostTheme: hostTheme,
+                          }).setWidth("30px")
+                        : (item as AnnotationSimple).base64Uri
+                        ? this.getImage((item as AnnotationSimple).base64Uri, "32px", "32px")
+                        : (item as Annotation).mimetype
+                        ? this.getImage((item as Annotation).mimetype, "32px", "32px")
+                        : getIcon({
+                            icon: IconName.Image,
+                            height: "32px",
+                            width: "32px",
+                            hostTheme: hostTheme,
+                          }).setWidth("30px"),
                     ]).setWidth("auto"),
                     new Column([
                       new TextBlock(item.filename)
@@ -89,7 +104,15 @@ export class FileAttachment<TProps, TState> extends Container implements IBaseCo
                         })
                   ),
                 ]),
-                new Column([this.getImage(DismissIcon, "12", "12", "Delete")])
+                new Column([
+                  getIcon({
+                    icon: IconName.DismissIcon,
+                    height: "12px",
+                    width: "12px",
+                    altText: "Delete",
+                    hostTheme: hostTheme,
+                  }),
+                ])
                   .shrink()
                   .setAction(
                     new ActionSubmit(
@@ -105,7 +128,15 @@ export class FileAttachment<TProps, TState> extends Container implements IBaseCo
     return [
       new Container([
         new ColumnSet([
-          new Column([this.getImage(Vector, "20px", "20px", "Vector")]).shrink() as Column,
+          new Column([
+            getIcon({
+              icon: IconName.ErrorIcon,
+              width: "20px",
+              height: "20px",
+              altText: "Vector",
+              hostTheme: hostTheme,
+            }),
+          ]).shrink() as Column,
           new Column([new TextBlock(maxSizeExceededMessage).setWeight(FontWeight.Bolder)]).stretch() as Column,
         ]).setIsVisible(isFileTooLarge),
         new ColumnSet([
@@ -141,12 +172,14 @@ export class FileAttachment<TProps, TState> extends Container implements IBaseCo
     return new Image(url, altText).setHorizontalAlignment(Alignment.Center).setHeight(height).setWidth(width);
   }
 
-  public action(quickViewNavigator: QuickViewNavigator<BaseAdaptiveCardView<{}, {}, {}>>): void {
+  public action(quickViewNavigator: QuickViewNavigator<BaseAdaptiveCardQuickView<{}, {}, {}>>): void {
     quickViewNavigator.push(this.actionId);
   }
 
   public updateProps(props: FileAttachmentProps): void {
-    this.updateItems(this.getFiles(props.filesList, props.maxSize, props.isFileTooLarge, props.maxSizeExceededMessage));
+    this.updateItems(
+      this.getFiles(props.filesList, props.maxSize, props.isFileTooLarge, props.maxSizeExceededMessage, props.hostTheme)
+    );
   }
 
   /**

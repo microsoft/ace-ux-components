@@ -3,9 +3,12 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
+import { HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
 import { List, SectionList } from "../list";
 import { NewListType } from "../types";
 import { ListOptions, PickerHelpers, SectionOptions } from "./PickerHelpers";
+
+const testHostTheme: HostTheme = "light";
 
 describe("Picker helpers", () => {
   let helpers: PickerHelpers;
@@ -14,9 +17,15 @@ describe("Picker helpers", () => {
   });
 
   it("Should get apply all list options", () => {
-    const list: List = new List("testComponentID", NewListType.BasicList, [{ test: "something" }], {
-      titleKey: "test",
-    });
+    const list: List = new List(
+      "testComponentID",
+      NewListType.BasicList,
+      [{ test: "something" }],
+      {
+        titleKey: "test",
+      },
+      testHostTheme
+    );
 
     const spyWithBodyIcon = jest.spyOn(list, "withBodyIcon");
     const spyWithCaptionIcon = jest.spyOn(list, "withCaptionIcon");
@@ -60,9 +69,15 @@ describe("Picker helpers", () => {
   });
 
   it("Should get always apply selectable items option in the list", () => {
-    const list: List = new List("testComponentID", NewListType.BasicList, [{ test: "something" }], {
-      titleKey: "test",
-    });
+    const list: List = new List(
+      "testComponentID",
+      NewListType.BasicList,
+      [{ test: "something" }],
+      {
+        titleKey: "test",
+      },
+      testHostTheme
+    );
     const spyWithSelectableItems = jest.spyOn(list, "withSelectableItems");
     const listOptions: ListOptions = {
       withRadio: false,
@@ -74,13 +89,18 @@ describe("Picker helpers", () => {
   });
 
   it("Should apply all section list options", () => {
-    const sectionList: SectionList = new SectionList("testComponentID", NewListType.BasicList, [
-      {
-        data: [{ test: "something" }],
-        listKeys: { titleKey: "test" },
-        sectionName: "testSection1",
-      },
-    ]);
+    const sectionList: SectionList = new SectionList(
+      "testComponentID",
+      NewListType.BasicList,
+      [
+        {
+          data: [{ test: "something" }],
+          listKeys: { titleKey: "test" },
+          sectionName: "testSection1",
+        },
+      ],
+      testHostTheme
+    );
     const spyWithSectionAction = jest.spyOn(sectionList, "withSectionAction");
     const spyWithSectionIcon = jest.spyOn(sectionList, "withSectionIcon");
     const spyWithSectionIconAction = jest.spyOn(sectionList, "withSectionIconAction");

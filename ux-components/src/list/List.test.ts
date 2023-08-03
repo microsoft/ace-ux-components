@@ -6,10 +6,12 @@
 import { ActionType, ColumnSet, Container, Image, TextBlock } from "../elements";
 import { ListKeys, NewListType } from "../types";
 import { List } from "./List";
-import { AvatarBlue } from "../assets";
 import { ListActionID } from "./types";
 import { peopleData } from "./constants";
+import { HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
+import { AvatarBlue_light } from "../assets";
 
+const testHostTheme: HostTheme = "light";
 describe("Basic List", () => {
   const listData = [
     { name: "John Doe", isActive: true },
@@ -17,7 +19,7 @@ describe("Basic List", () => {
   ];
   const keys: ListKeys = { titleKey: "name" };
   it("Should generate a basic list", () => {
-    const testList = new List("listID", NewListType.BasicList, listData, keys);
+    const testList = new List("listID", NewListType.BasicList, listData, keys, testHostTheme);
     const firstRow = (testList.items[0] as Container).items[0] as ColumnSet;
     const secondRow = (testList.items[1] as Container).items[0] as ColumnSet;
 
@@ -27,10 +29,10 @@ describe("Basic List", () => {
   });
 
   it("Should not generate title icon on basic list", () => {
-    const testList = new List("listID", NewListType.BasicList, listData, keys)
-      .withTitleIcon(AvatarBlue, "TitleAltText")
-      .withBodyIcon(AvatarBlue, "BodyAltText")
-      .withCaptionIcon(AvatarBlue, "CaptionAltText");
+    const testList = new List("listID", NewListType.BasicList, listData, keys, testHostTheme)
+      .withTitleIcon(AvatarBlue_light, "TitleAltText")
+      .withBodyIcon(AvatarBlue_light, "BodyAltText")
+      .withCaptionIcon(AvatarBlue_light, "CaptionAltText");
     const firstRow = (testList.items[0] as Container).items[0] as ColumnSet;
     const secondRow = (testList.items[1] as Container).items[0] as ColumnSet;
 
@@ -39,10 +41,10 @@ describe("Basic List", () => {
   });
 
   it("Should generate a list with chevron", () => {
-    const testList = new List("listID", NewListType.BasicList, listData, keys).withChevron("ChevronAction", [
-      "Value 1",
-      "Value 2",
-    ]);
+    const testList = new List("listID", NewListType.BasicList, listData, keys, testHostTheme).withChevron(
+      "ChevronAction",
+      ["Value 1", "Value 2"]
+    );
     const firstRow = (testList.items[0] as Container).items[0] as ColumnSet;
     const secondRow = (testList.items[1] as Container).items[0] as ColumnSet;
 
@@ -54,7 +56,10 @@ describe("Basic List", () => {
   });
 
   it("Should generate a list with toggle", () => {
-    const testList = new List("listID", NewListType.BasicList, listData, keys).withToggle("toggleAction", "isActive");
+    const testList = new List("listID", NewListType.BasicList, listData, keys, testHostTheme).withToggle(
+      "toggleAction",
+      "isActive"
+    );
     const firstRow = (testList.items[0] as Container).items[0] as ColumnSet;
     const secondRow = (testList.items[1] as Container).items[0] as ColumnSet;
 
@@ -63,7 +68,7 @@ describe("Basic List", () => {
   });
 
   it("Should generate a list with radio buttons", () => {
-    const testList = new List("listID", NewListType.BasicList, listData, keys);
+    const testList = new List("listID", NewListType.BasicList, listData, keys, testHostTheme);
     testList.setRadioValue(0);
     testList.withRadioButton();
     const firstRow = (testList.items[0] as Container).items[0] as ColumnSet;
@@ -79,8 +84,8 @@ describe("Basic List", () => {
   });
 
   it("Should generate a list with interactive icon", () => {
-    const testList = new List("listID", NewListType.BasicList, listData, keys).withInteractiveIcon(
-      AvatarBlue,
+    const testList = new List("listID", NewListType.BasicList, listData, keys, testHostTheme).withInteractiveIcon(
+      AvatarBlue_light,
       "interactiveAction",
       "testIconAltText"
     );
@@ -95,7 +100,9 @@ describe("Basic List", () => {
   });
 
   it("Should generate a list with left accessory icon", () => {
-    const testList = new List("listID", NewListType.BasicList, listData, keys).withLeftAccessoryIcon(AvatarBlue);
+    const testList = new List("listID", NewListType.BasicList, listData, keys, testHostTheme).withLeftAccessoryIcon(
+      AvatarBlue_light
+    );
     const firstRow = (testList.items[0] as Container).items[0] as ColumnSet;
     const secondRow = (testList.items[1] as Container).items[0] as ColumnSet;
 
@@ -104,7 +111,9 @@ describe("Basic List", () => {
   });
 
   it("Should generate a list with profile picture", () => {
-    const testList = new List("listID", NewListType.BasicList, listData, keys).withProfilePicture("profile");
+    const testList = new List("listID", NewListType.BasicList, listData, keys, testHostTheme).withProfilePicture(
+      "profile"
+    );
     const firstRow = (testList.items[0] as Container).items[0] as ColumnSet;
     const secondRow = (testList.items[1] as Container).items[0] as ColumnSet;
 
@@ -113,7 +122,9 @@ describe("Basic List", () => {
   });
 
   it("Should generate a list with selectable items", () => {
-    const testList = new List("listID", NewListType.BasicList, listData, keys).withSelectableItems("selectAction");
+    const testList = new List("listID", NewListType.BasicList, listData, keys, testHostTheme).withSelectableItems(
+      "selectAction"
+    );
     const firstRow = testList.items[0] as Container;
     const secondRow = testList.items[1] as Container;
 
@@ -130,7 +141,7 @@ describe("Multiline List", () => {
   const keys: ListKeys = { titleKey: "name", bodyKey: "role", captionKey: "caption" };
 
   it("Should generate simple multiline list", () => {
-    const testMultilineList = new List("listID", NewListType.MultilineList, listData, keys);
+    const testMultilineList = new List("listID", NewListType.MultilineList, listData, keys, testHostTheme);
     const firstItem = (testMultilineList.items[0] as Container).items[0] as ColumnSet;
     const secondItem = (testMultilineList.items[1] as Container).items[0] as ColumnSet;
 
@@ -160,10 +171,10 @@ describe("Multiline List", () => {
   });
 
   it("Should generate a multiline list with titleIcon", () => {
-    const testMultilineList = new List("listID", NewListType.MultilineList, listData, keys)
+    const testMultilineList = new List("listID", NewListType.MultilineList, listData, keys, testHostTheme)
       .withLeftAccessoryIcon("")
       .withLeftAccessoryIcon("")
-      .withTitleIcon(AvatarBlue, "TitleIcon");
+      .withTitleIcon(AvatarBlue_light, "TitleIcon");
     const firstItem = (testMultilineList.items[0] as Container).items[0] as ColumnSet;
     const secondItem = (testMultilineList.items[1] as Container).items[0] as ColumnSet;
 
@@ -179,10 +190,10 @@ describe("Multiline List", () => {
   });
 
   it("Should generate a multiline list with bodyIcon", () => {
-    const testMultilineList = new List("listID", NewListType.MultilineList, listData, keys)
+    const testMultilineList = new List("listID", NewListType.MultilineList, listData, keys, testHostTheme)
       .withLeftAccessoryIcon("")
       .withLeftAccessoryIcon("")
-      .withBodyIcon(AvatarBlue, "BodyIcon");
+      .withBodyIcon(AvatarBlue_light, "BodyIcon");
     const firstItem = (testMultilineList.items[0] as Container).items[0] as ColumnSet;
     const secondItem = (testMultilineList.items[1] as Container).items[0] as ColumnSet;
 
@@ -198,10 +209,10 @@ describe("Multiline List", () => {
   });
 
   it("Should generate a multiline list with captionIcon", () => {
-    const testMultilineList = new List("listID", NewListType.MultilineList, listData, keys)
+    const testMultilineList = new List("listID", NewListType.MultilineList, listData, keys, testHostTheme)
       .withLeftAccessoryIcon("")
       .withLeftAccessoryIcon("")
-      .withCaptionIcon(AvatarBlue, "CaptionIcon");
+      .withCaptionIcon(AvatarBlue_light, "CaptionIcon");
     const firstItem = (testMultilineList.items[0] as Container).items[0] as ColumnSet;
     const secondItem = (testMultilineList.items[1] as Container).items[0] as ColumnSet;
 
@@ -217,9 +228,9 @@ describe("Multiline List", () => {
   });
 
   it("Should generate a multiline list with a left icon and titleIcon", () => {
-    const testMultilineList = new List("listID", NewListType.MultilineList, listData, keys)
+    const testMultilineList = new List("listID", NewListType.MultilineList, listData, keys, testHostTheme)
       .withLeftAccessoryIcon("")
-      .withTitleIcon(AvatarBlue, "TitleIcon");
+      .withTitleIcon(AvatarBlue_light, "TitleIcon");
     const firstItem = (testMultilineList.items[0] as Container).items[0] as ColumnSet;
     const secondItem = (testMultilineList.items[1] as Container).items[0] as ColumnSet;
 
@@ -235,9 +246,9 @@ describe("Multiline List", () => {
   });
 
   it("Should generate a multiline list with a left icon and bodyIcon", () => {
-    const testMultilineList = new List("listID", NewListType.MultilineList, listData, keys)
+    const testMultilineList = new List("listID", NewListType.MultilineList, listData, keys, testHostTheme)
       .withLeftAccessoryIcon("")
-      .withBodyIcon(AvatarBlue, "BodyIcon");
+      .withBodyIcon(AvatarBlue_light, "BodyIcon");
     const firstItem = (testMultilineList.items[0] as Container).items[0] as ColumnSet;
     const secondItem = (testMultilineList.items[1] as Container).items[0] as ColumnSet;
 
@@ -253,9 +264,9 @@ describe("Multiline List", () => {
   });
 
   it("Should generate a multiline list with a left icon and captionIcon", () => {
-    const testMultilineList = new List("listID", NewListType.MultilineList, listData, keys)
+    const testMultilineList = new List("listID", NewListType.MultilineList, listData, keys, testHostTheme)
       .withLeftAccessoryIcon("")
-      .withCaptionIcon(AvatarBlue, "CaptionIcon");
+      .withCaptionIcon(AvatarBlue_light, "CaptionIcon");
     const firstItem = (testMultilineList.items[0] as Container).items[0] as ColumnSet;
     const secondItem = (testMultilineList.items[1] as Container).items[0] as ColumnSet;
 
@@ -271,10 +282,10 @@ describe("Multiline List", () => {
   });
 
   it("Should generate a multiline list with title icon, body icon, caption icon", () => {
-    const testMultilineList = new List("listID", NewListType.MultilineList, listData, keys)
-      .withTitleIcon(AvatarBlue, "TitleIcon")
-      .withBodyIcon(AvatarBlue, "BodyIcon")
-      .withCaptionIcon(AvatarBlue, "Caption");
+    const testMultilineList = new List("listID", NewListType.MultilineList, listData, keys, testHostTheme)
+      .withTitleIcon(AvatarBlue_light, "TitleIcon")
+      .withBodyIcon(AvatarBlue_light, "BodyIcon")
+      .withCaptionIcon(AvatarBlue_light, "Caption");
     const firstItem = (testMultilineList.items[0] as Container).items[0] as ColumnSet;
     const secondItem = (testMultilineList.items[1] as Container).items[0] as ColumnSet;
 
@@ -294,7 +305,7 @@ describe("Multiline List", () => {
   });
 
   it("Should generate multiline list with chevron", () => {
-    const testMultilineList = new List("listID", NewListType.MultilineList, listData, keys).withChevron(
+    const testMultilineList = new List("listID", NewListType.MultilineList, listData, keys, testHostTheme).withChevron(
       "chevronActionID"
     );
     const firstItem = (testMultilineList.items[0] as Container).items[0] as ColumnSet;
@@ -309,7 +320,7 @@ describe("Multiline List", () => {
 
   it("Should generate multiline list with toggle", () => {
     const toggleKey = "isActive";
-    const testMultilineList = new List("listID", NewListType.MultilineList, listData, keys).withToggle(
+    const testMultilineList = new List("listID", NewListType.MultilineList, listData, keys, testHostTheme).withToggle(
       "toggleAction",
       toggleKey
     );
@@ -324,7 +335,7 @@ describe("Multiline List", () => {
   });
 
   it("Should generate multiline list with radio button", () => {
-    const testMultilineList = new List("listID", NewListType.MultilineList, listData, keys);
+    const testMultilineList = new List("listID", NewListType.MultilineList, listData, keys, testHostTheme);
     testMultilineList.withRadioButton();
     const firstItem = (testMultilineList.items[0] as Container).items[0] as ColumnSet;
     const secondItem = (testMultilineList.items[1] as Container).items[0] as ColumnSet;
@@ -339,9 +350,13 @@ describe("Multiline List", () => {
   });
 
   it("Should generate multiline list as people list with profile picture", () => {
-    const testMultilineList = new List("listID", NewListType.MultilineList, listData, keys).withProfilePicture(
-      "profile"
-    );
+    const testMultilineList = new List(
+      "listID",
+      NewListType.MultilineList,
+      listData,
+      keys,
+      testHostTheme
+    ).withProfilePicture("profile");
     const firstItem = (testMultilineList.items[0] as Container).items[0] as ColumnSet;
     const secondItem = (testMultilineList.items[1] as Container).items[0] as ColumnSet;
 
@@ -350,10 +365,13 @@ describe("Multiline List", () => {
   });
 
   it("Should generate multiline list as people list with action", () => {
-    const testMultilineList = new List("listID", NewListType.MultilineList, listData, keys).withPeopleListAction(
-      "testActionID",
-      "TestAction"
-    );
+    const testMultilineList = new List(
+      "listID",
+      NewListType.MultilineList,
+      listData,
+      keys,
+      testHostTheme
+    ).withPeopleListAction("testActionID", "TestAction");
     const firstItem = testMultilineList.items[0] as Container;
     const secondItem = testMultilineList.items[1] as Container;
 
@@ -362,7 +380,7 @@ describe("Multiline List", () => {
   });
 
   it("Should generate a list with pagination and on the second page", () => {
-    const testList = new List("listID", NewListType.MultilineList, peopleData, { titleKey: "name" });
+    const testList = new List("listID", NewListType.MultilineList, peopleData, { titleKey: "name" }, testHostTheme);
     testList.nextPage();
     testList.resetItems();
 

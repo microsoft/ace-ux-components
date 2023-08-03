@@ -7,9 +7,6 @@ export class WeekCalendarSampleQuickView extends SampleBaseQuickView {
   public get title() {
     return ComponentDisplayNames.weekCalendar;
   }
-  constructor() {
-    super();
-  }
 
   public get template(): ISPFxAdaptiveCard {
     //TODO: the whole component is commented out for reasons unknown

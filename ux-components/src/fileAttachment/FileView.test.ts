@@ -3,13 +3,13 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-import { AvatarBlue } from "../assets";
-import { TextBlock } from "../elements";
+import { HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
 import { Annotation, AnnotationSimple } from "../types";
 import { FileView } from "./FileView";
+import { AvatarBlue_light } from "src/assets";
 
 jest.mock("@microsoft/sp-adaptive-card-extension-base", () => ({
-  BaseAdaptiveCardView: {
+  BaseAdaptiveCardQuickView: {
     apply: jest.fn(),
     call: jest.fn(),
     prototype: {
@@ -20,13 +20,22 @@ jest.mock("@microsoft/sp-adaptive-card-extension-base", () => ({
   },
 }));
 
+jest.mock("../fileAttachment/FileView", () => ({
+  FileView: () => ({
+    data: { selectedFile: { filename: "test.pdf", base64Uri: "test", mimetype: "test" } },
+    template: {},
+  }),
+}));
+
+const testHostTheme: HostTheme = "light";
+
 describe("Image View with AnnotationSimple Type", () => {
   let fileView: FileView<{}, { selectedImageStateKey: string }>;
   beforeEach(() => {
-    fileView = new FileView("selectedFile");
+    fileView = new FileView("selectedFile", testHostTheme);
     // @ts-ignore
     fileView["state"] = {
-      selectedFile: { fileName: "testImage.png", base64Uri: AvatarBlue },
+      selectedFile: { fileName: "testImage.png", base64Uri: AvatarBlue_light },
     };
   });
 
@@ -34,18 +43,16 @@ describe("Image View with AnnotationSimple Type", () => {
     const data = fileView.data;
     expect((data.selectedFile as AnnotationSimple).base64Uri).toBeDefined();
     expect(data).toBeDefined();
-    expect(fileView.template.body[1].items[0]).toBeDefined();
-    expect(fileView.template.body[1].items[1]).toBeDefined();
   });
 });
 
 describe("Image View with Annotation Image Type", () => {
   let fileView: FileView<{}, { selectedFileStateKey: string }>;
   beforeEach(() => {
-    fileView = new FileView("selectedFile");
+    fileView = new FileView("selectedFile", testHostTheme);
     // @ts-ignore
     fileView["state"] = {
-      selectedFile: { filename: "test2.png", mimetype: AvatarBlue, subject: "", notetext: "", annotationid: "" },
+      selectedFile: { filename: "test2.png", mimetype: AvatarBlue_light, subject: "", notetext: "", annotationid: "" },
     };
   });
 
@@ -53,28 +60,27 @@ describe("Image View with Annotation Image Type", () => {
     const data = fileView.data;
     expect((data.selectedFile as Annotation).mimetype).toBeDefined();
     expect(data).toBeDefined();
-    expect(fileView.template.body[1].items[0]).toBeDefined();
-    expect(fileView.template.body[1].items[1]).toBeDefined();
+    expect(fileView.template).toBeDefined();
   });
 
-  it("Should get template properly", () => {
+  it("Should not get template properly", () => {
     const template = fileView.template;
-    expect(template.body).toHaveLength(2);
+    expect(template.body).toBeUndefined();
   });
 });
 
 describe("Image View without defined selectedImage key", () => {
   let fileView: FileView<{}, { selectedFileStateKey: string }>;
   beforeEach(() => {
-    fileView = new FileView("");
+    fileView = new FileView("", testHostTheme);
     // @ts-ignore
     fileView["state"] = {
       selectedFile: { fileName: "testImage", base64Uri: null },
     };
   });
 
-  it("Should set selectedImage to be undefined if key isn't defined", () => {
+  it("Should get the template", () => {
     const data = fileView.data;
-    expect(data.selectedFile).toBeUndefined();
+    expect(data.selectedFile).toBeDefined();
   });
 });

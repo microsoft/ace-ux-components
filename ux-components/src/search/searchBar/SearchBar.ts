@@ -3,6 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
+import { getIcon } from "../../getIcon";
 import {
   ActionSet,
   ActionStyle,
@@ -12,7 +13,6 @@ import {
   Column,
   ColumnSet,
   Container,
-  ContainerStyle,
   FontSize,
   FontWeight,
   Image,
@@ -22,8 +22,9 @@ import {
   VerticalAlignment,
 } from "../../elements";
 
-import { CancelIcon } from "../../assets";
 import { SearchBarProps } from "./SearchBarProps.types";
+import { IconName } from "../../types";
+import { HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
 
 export class SearchBar extends Container {
   private searchTextValue: string;
@@ -34,6 +35,8 @@ export class SearchBar extends Container {
   private showSearchResultHeading: boolean;
   private placeholder: string = "Search Text";
   private searchResultsText: string;
+  private hostTheme: HostTheme;
+  private componentID: string;
 
   constructor(searchData: SearchBarProps) {
     super([]);
@@ -45,6 +48,8 @@ export class SearchBar extends Container {
     this.showSearchResultHeading = searchData.showSearchResultHeading;
     this.placeholder = searchData.placeholder;
     this.searchResultsText = searchData.isSearching ? "Searching..." : "";
+    this.hostTheme = searchData.hostTheme;
+    this.componentID = searchData.componentID;
     this.items = this.getSearchBarElements();
   }
 
@@ -56,16 +61,24 @@ export class SearchBar extends Container {
           .setVerticalAlignment(VerticalAlignment.Center)
           .stretch(),
         new Column([
-          new Image(CancelIcon, "clear search text")
-            .setWidth("32px")
-            .setAction(new ActionSubmit(this.searchBoxCancelButtonId, "")),
+          getIcon({
+            icon: IconName.ClearSearchBar,
+            altText: "clear search text",
+            width: "35px",
+            height: "35px",
+            hostTheme: this.hostTheme,
+          }).setAction(new ActionSubmit(this.searchBoxCancelButtonId, "")),
         ])
           .setVerticalAlignment(VerticalAlignment.Bottom)
           .setIsVisible(this.cancelButtonVisible)
           .setSpacing(Spacing.Small)
           .shrink() as Column,
         new Column([
-          new ActionSet([new ActionSubmit(this.searchBoxSubmitButtonId, "Search").setStyle(ActionStyle.Positive)]),
+          new ActionSet([
+            new ActionSubmit(this.searchBoxSubmitButtonId, "Search", { componentID: this.componentID }).setStyle(
+              ActionStyle.Positive
+            ),
+          ]),
         ])
           .setVerticalAlignment(VerticalAlignment.Center)
           .setSpacing(Spacing.Small)

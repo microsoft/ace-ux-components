@@ -7,9 +7,6 @@ export class InputNumberSampleQuickView extends SampleBaseQuickView {
   public get title() {
     return ComponentDisplayNames.inputNumber;
   }
-  constructor() {
-    super();
-  }
 
   public get template(): ISPFxAdaptiveCard {
     return createTemplate([new InputNumber("TEST", 10)]);

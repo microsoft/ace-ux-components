@@ -6,6 +6,7 @@
 import { SUCCESS_IMAGE_ALT_TEXT, LARGE_IMAGE_SIZE, SMALL_IMAGE_SIZE } from "./constants";
 import { SuccessView } from "./SuccessView";
 import { StateViewType } from "./StateView.types";
+import { HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
 
 describe("SuccessView Component", () => {
   beforeEach(() => {
@@ -14,8 +15,10 @@ describe("SuccessView Component", () => {
   });
 });
 
+const testHostTheme: HostTheme = "light";
+
 const getTestSuccessView = (stateViewType: StateViewType = "Section"): SuccessView => {
-  return new SuccessView(stateViewType, "Test success view");
+  return new SuccessView(stateViewType, "Test success view", testHostTheme);
 };
 
 it("Should create state view component", () => {

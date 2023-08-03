@@ -18,10 +18,6 @@ import { ISampleComponentsAdaptiveCardExtensionState, SampleComponentStateKeys }
 import { SampleBaseQuickView } from "./SampleBaseQuickView";
 
 export class HeaderSampleQuickView extends SampleBaseQuickView {
-  constructor() {
-    super();
-  }
-
   public get title(): string {
     return ComponentDisplayNames.header;
   }
@@ -37,6 +33,7 @@ export class HeaderSampleQuickView extends SampleBaseQuickView {
       listData: this.state[SampleComponentStateKeys.SAMPLE_PICKER_LIST_DATA],
       listKeys: { titleKey: "name" },
       viewHeaderLabel: "Sample label",
+      hostTheme: this.hostTheme,
     };
 
     const picker: Picker<ISampleComponentsAdaptiveCardExtensionState> = this.registerComponent(

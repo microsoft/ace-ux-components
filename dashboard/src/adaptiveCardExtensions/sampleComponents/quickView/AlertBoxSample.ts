@@ -7,9 +7,6 @@ export class AlertBoxSampleQuickView extends SampleBaseQuickView {
   public get title() {
     return ComponentDisplayNames.alertBox;
   }
-  constructor() {
-    super();
-  }
 
   public get template(): ISPFxAdaptiveCard {
     return createTemplate([

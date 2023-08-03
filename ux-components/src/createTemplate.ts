@@ -1,8 +1,3 @@
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) Microsoft Corporation.
- *  Licensed under the MIT License. See License.txt in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
-
 import { ISelectMediaAction, ISPFxAdaptiveCard } from "@microsoft/sp-adaptive-card-extension-base";
 import { IOpenUrlAction, IShowCardAction, ISubmitAction } from "adaptivecards/lib/schema";
 import { BaseElement } from "./elements/BaseElement";

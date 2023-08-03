@@ -4,14 +4,6 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { isEqual } from "@microsoft/sp-lodash-subset";
-import {
-  ChevronLeft,
-  ChevronLeftDisabled,
-  ChevronRight,
-  ChevronRightDisabled,
-  RadioEmpty,
-  RadioFilled,
-} from "../assets";
 import { ComplexComponent } from "../baseComponent/ComplexComponent";
 import {
   ActionSet,
@@ -31,8 +23,10 @@ import {
   Spacing,
   TextBlock,
 } from "../elements";
-import { ListKeys, NewListType } from "../types";
+import { IconName, IconProps, ListKeys, NewListType } from "../types";
 import { ListActionID } from "./types";
+import { HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
+import { getIcon } from "../getIcon";
 
 const PAGINATION_SKIP: number = 25;
 
@@ -43,6 +37,7 @@ export class List extends ComplexComponent {
   private needsPagination: boolean;
   private selectedRadioItemIndex: number | undefined;
   private startIndex: number;
+  private hostTheme: HostTheme;
 
   /**
    * List component. Can either be a basic list or multiline list with various iterations like with chevrons, radios, toggles, etc.
@@ -51,7 +46,13 @@ export class List extends ComplexComponent {
    * @param listData Data to be displayed in the list.
    * @param listDataKeys Keys to be used to display data on the list, ex: ["title", "titleIcon", "body", "bodyIcon", "caption", "captionIcon"]. If the specific "key" is not included, simply pass an empty string "".
    */
-  constructor(componentID: string, type: NewListType, listData: unknown[], listDataKeys: ListKeys) {
+  constructor(
+    componentID: string,
+    type: NewListType,
+    listData: unknown[],
+    listDataKeys: ListKeys,
+    hostTheme: HostTheme
+  ) {
     super(componentID);
     this.id = componentID;
     this.listType = type;
@@ -59,6 +60,7 @@ export class List extends ComplexComponent {
     this.listDataKeys = listDataKeys;
     this.needsPagination = listData.length > PAGINATION_SKIP;
     this.startIndex = 0;
+    this.hostTheme = hostTheme;
     this.generateItems();
   }
 
@@ -87,15 +89,23 @@ export class List extends ComplexComponent {
       const isFirstPage = this.startIndex === 0;
       const isLastPage = end === this.listData.length;
 
+      const iconPropsLeft: IconProps = {
+        icon: isFirstPage ? IconName.ChevronLeftDisabled : IconName.ChevronLeft,
+        altText: "Left arrow",
+        hostTheme: this.hostTheme,
+      };
+
+      const iconPropsRight: IconProps = {
+        icon: isLastPage ? IconName.ChevronRightDisabled : IconName.ChevronRight,
+        altText: "Right arrow",
+        hostTheme: this.hostTheme,
+      };
+
       const paginationSection: ColumnSet = new ColumnSet([
         new Column([]).stretch(),
-        new Column([
-          new Image(isFirstPage ? ChevronLeftDisabled : ChevronLeft, "Left arrow").setHeight("24px").setWidth("24px"),
-        ]).shrink(),
+        new Column([getIcon(iconPropsLeft)]).shrink(),
         new Column([new TextBlock(`${this.startIndex + 1}-${end}`)]).shrink(),
-        new Column([
-          new Image(isLastPage ? ChevronRightDisabled : ChevronRight, "Right arrow").setHeight("24px").setWidth("24px"),
-        ]).shrink(),
+        new Column([getIcon(iconPropsRight)]).shrink(),
         new Column([]).stretch(),
       ]);
 
@@ -279,11 +289,18 @@ export class List extends ComplexComponent {
       const item = this.items[index];
       if (item instanceof Container) {
         const currentColumnSet: ColumnSet = item.items[0] as ColumnSet;
+        const iconProps: IconProps = {
+          icon: IconName.ChevronRight,
+          height: "20px",
+          width: "20px",
+          altText: "Chevron right",
+          hostTheme: this.hostTheme,
+        };
         currentColumnSet.columns.push(
           new Column([
             new ColumnSet([
               value ? new Column([new TextBlock(value[index])]) : null,
-              new Column([new Image(ChevronRight, "Chevron right").setHeight("20px").setWidth("20px")]).shrink(),
+              new Column([getIcon(iconProps)]).shrink(),
             ]),
           ]).shrink()
         );
@@ -367,10 +384,14 @@ export class List extends ComplexComponent {
         const currentColumn = item.items[0] as ColumnSet;
         currentColumn.columns.unshift(
           new Column([
-            new Image(
-              index + this.startIndex === this.selectedRadioItemIndex ? RadioFilled : RadioEmpty,
-              `Radio toggle for item ${index + 1} of ${this.listData.length}`
-            ),
+            getIcon({
+              icon:
+                index + this.startIndex === this.selectedRadioItemIndex
+                  ? IconName.MarkerCurrent
+                  : IconName.MarkerNotStarted,
+              altText: `Radio toggle for item ${index + 1} of ${this.listData.length}`,
+              hostTheme: this.hostTheme,
+            }),
           ])
             .shrink()
             .setAction(

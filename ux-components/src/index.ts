@@ -21,4 +21,5 @@ export * from "./picker";
 export * from "./search";
 export * from "./toggleRow";
 export * from "./types";
+export { getIcon } from "./getIcon";
 // export * from "./weekCalendar";

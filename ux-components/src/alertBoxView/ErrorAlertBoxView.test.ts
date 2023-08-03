@@ -1,11 +1,7 @@
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) Microsoft Corporation.
- *  Licensed under the MIT License. See License.txt in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
-
-import { ErrorAlertIcon } from "../assets";
+import { HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
 import { ErrorAlertBoxView } from "./ErrorAlertBoxView";
 
+const testHostTheme: HostTheme = "light";
 describe("AlertBox Component", () => {
   beforeEach(() => {
     jest.resetAllMocks();
@@ -15,8 +11,10 @@ describe("AlertBox Component", () => {
   it("Should render error message alert", () => {
     const alertContainer: any = new ErrorAlertBoxView(
       "Error message",
-      null,
+      testHostTheme,
       true,
+      null,
+      null,
       [{ actionId: "action", actionText: "Action", actionData: "actionData" }],
       "Title",
       true
@@ -27,8 +25,10 @@ describe("AlertBox Component", () => {
   it("Should render error message alert with custom icon", () => {
     const alertContainer: any = new ErrorAlertBoxView(
       "Error message",
-      { iconName: ErrorAlertIcon },
-      false,
+      testHostTheme,
+      true,
+      null,
+      null,
       [{ actionId: "action", actionText: "Action", actionData: "actionData" }],
       "Title",
       true
@@ -39,8 +39,10 @@ describe("AlertBox Component", () => {
   it("Should render error message alert with action button", () => {
     const alertContainer: any = new ErrorAlertBoxView(
       "Error message",
-      { iconName: ErrorAlertIcon },
-      false,
+      testHostTheme,
+      true,
+      null,
+      null,
       [{ actionId: "action", actionText: "Action", actionData: "actionData" }],
       "Title"
     );
