@@ -4,6 +4,7 @@ import {
   ColumnSet,
   Container,
   FontWeight,
+  IconName,
   TextBlock,
   VerticalAlignment,
   createTemplate,
