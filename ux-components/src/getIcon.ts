@@ -100,8 +100,6 @@ import {
   MarkerCurrent_light,
   MarkerNotStarted_dark,
   MarkerNotStarted_light,
-  MyHubLogo_dark,
-  MyHubLogo_light,
   Notepad_dark,
   Notepad_light,
   PendingIcon_dark,
@@ -299,10 +297,6 @@ export function getThemeBasesIcon(iconName: IconName, hostTheme: HostTheme): str
     }
     case IconName.MarkerNotStarted: {
       imageURL = hostTheme === "dark" ? MarkerNotStarted_dark : MarkerNotStarted_light;
-      break;
-    }
-    case IconName.MyHubLogo: {
-      imageURL = hostTheme === "dark" ? MyHubLogo_dark : MyHubLogo_light;
       break;
     }
     case IconName.PendingIcon: {

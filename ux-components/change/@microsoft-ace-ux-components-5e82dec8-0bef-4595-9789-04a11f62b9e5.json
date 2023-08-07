@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "remove myhublogo, update types & geticon",
+  "packageName": "@microsoft/ace-ux-components",
+  "email": "kylemas@microsoft.com",
+  "dependentChangeType": "patch"
+}

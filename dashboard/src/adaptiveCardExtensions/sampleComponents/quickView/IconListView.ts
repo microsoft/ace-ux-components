@@ -51,7 +51,6 @@ export class IconListView extends SampleBaseQuickView {
     IconName.MarkerCompleted,
     IconName.MarkerCurrent,
     IconName.MarkerNotStarted,
-    IconName.MyHubLogo,
     IconName.PendingIcon,
     IconName.PhoneIcon,
     IconName.QuestionFilled,
