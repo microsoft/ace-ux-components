@@ -178,7 +178,6 @@ export enum IconName {
   MarkerCompleted = "MarkerCompleted",
   MarkerCurrent = "MarkerCurrent",
   MarkerNotStarted = "MarkerNotStarted",
-  MyHubLogo = "MyHubLogo",
   PendingIcon = "PendingIcon",
   PhoneIcon = "PhoneIcon",
   QuestionFilled = "QuestionFilled",
