@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-import { HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
+import { HostTheme } from "../types";
 import { ActionStyle, ActionSubmit, CalendarType, ColumnSet, FontColor, Image, TextBlock } from "../elements";
 import { Persona } from "./Persona";
 import { PersonaParams, WorkStatus } from "./Persona.type";

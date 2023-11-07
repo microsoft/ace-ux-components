@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-import { BaseAdaptiveCardQuickView, HostTheme, QuickViewNavigator } from "@microsoft/sp-adaptive-card-extension-base";
+import { BaseAdaptiveCardQuickView, QuickViewNavigator } from "@microsoft/sp-adaptive-card-extension-base";
 import {
   ActionSubmit,
   ActionSet,
@@ -18,7 +18,7 @@ import {
   ActionStyle,
 } from "../elements";
 import { Alignment, ContainerStyle, FontColor, Spacing } from "../elements/Schema.types";
-import { Annotation, AnnotationSimple, FileAttachmentProps, IconName, MediaType } from "../types";
+import { Annotation, AnnotationSimple, FileAttachmentProps, HostTheme, IconName, MediaType } from "../types";
 import { FileView } from "./FileView";
 import { IBaseComponent } from "../baseComponent/IBaseComponent";
 import { getIcon } from "../getIcon";

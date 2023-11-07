@@ -3,10 +3,10 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-import { BaseAdaptiveCardQuickView, HostTheme, QuickViewNavigator } from "@microsoft/sp-adaptive-card-extension-base";
+import { BaseAdaptiveCardQuickView, QuickViewNavigator } from "@microsoft/sp-adaptive-card-extension-base";
 import { ComplexComponent } from "../baseComponent/ComplexComponent";
 import { ActionSubmit, Column, ColumnSet, ElementType, FontSize, FontWeight, Image, TextBlock } from "../elements";
-import { IconName, IconProps, ListKeys, SectionListData } from "../types";
+import { HostTheme, IconName, IconProps, ListKeys, SectionListData } from "../types";
 import { ListOptions, SectionOptions } from "./PickerHelpers";
 import { PickerListView, ViewProps } from "./PickerListView";
 import { getIcon } from "../getIcon";

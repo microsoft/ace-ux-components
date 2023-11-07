@@ -1,4 +1,3 @@
-import { HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
 import {
   AddImage_dark,
   AddImage_light,
@@ -144,7 +143,7 @@ import {
   WarningIcon_light,
 } from "./assets";
 import { Image } from "./elements";
-import { IconName, IconProps } from "./types";
+import { HostTheme, IconName, IconProps } from "./types";
 
 export function getIcon(iconProps: IconProps): Image {
   return new Image(getThemeBasesIcon(iconProps.icon, iconProps.hostTheme), iconProps.altText || iconProps.icon)

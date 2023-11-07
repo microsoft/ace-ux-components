@@ -14,9 +14,8 @@ import {
 } from "../elements";
 import { BaseElement } from "../elements/BaseElement";
 import { AlertBoxIconSize, AlertBoxStateType, AlertViewAction } from "./AlertBoxStateView.types";
-import { HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
 import { getIcon } from "../getIcon";
-import { IconName, IconProps } from "../types";
+import { HostTheme, IconName, IconProps } from "../types";
 
 const getItems = (
   backgroundColor: ContainerStyle,

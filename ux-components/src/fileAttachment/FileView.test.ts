@@ -3,8 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-import { HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
-import { Annotation, AnnotationSimple } from "../types";
+import { Annotation, AnnotationSimple, HostTheme } from "../types";
 import { FileView } from "./FileView";
 import { AvatarBlue_light } from "src/assets";
 

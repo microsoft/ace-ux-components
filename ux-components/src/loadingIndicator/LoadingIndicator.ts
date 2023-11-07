@@ -3,9 +3,8 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-import { HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
 import { Alignment, Container, FontSize, Image, TextBlock } from "../elements";
-import { LoadingSize, LOADING_ID, IconProps, IconName } from "../types";
+import { HostTheme, LoadingSize, LOADING_ID, IconProps, IconName } from "../types";
 import { getIcon } from "../getIcon";
 
 export class LoadingIndicator extends Container {

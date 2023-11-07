@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-import { HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
+import { HostTheme } from "../types";
 import { ERROR_IMAGE_ALT_TEXT, LARGE_IMAGE_SIZE, SMALL_IMAGE_SIZE } from "./constants";
 import { ErrorView } from "./ErrorView";
 import { StateViewType } from "./StateView.types";

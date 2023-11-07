@@ -25,7 +25,7 @@ import {
 } from "../elements";
 import { IconName, IconProps, ListKeys, NewListType } from "../types";
 import { ListActionID } from "./types";
-import { HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
+import { HostTheme } from "../types";
 import { getIcon } from "../getIcon";
 
 const PAGINATION_SKIP: number = 25;

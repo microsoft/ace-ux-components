@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-import { QuickViewNavigator, BaseAdaptiveCardQuickView, HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
+import { QuickViewNavigator, BaseAdaptiveCardQuickView } from "@microsoft/sp-adaptive-card-extension-base";
 import { isEqual } from "@microsoft/sp-lodash-subset";
 import {
   ActionSubmit,
@@ -21,6 +21,7 @@ import {
 import { Persona, PersonaParams } from "../persona";
 import {
   ComponentProps,
+  HostTheme,
   IconName,
   IconProps,
   ItemsListPersonaProps,

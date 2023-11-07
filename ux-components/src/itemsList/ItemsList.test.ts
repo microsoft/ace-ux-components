@@ -3,9 +3,8 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-import { HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
 import { ActionSubmit, Alignment, ColumnSet, Container, FontColor, TextBlock } from "../elements";
-import { ItemsListProps, ListItem, ListType } from "../types";
+import { HostTheme, ItemsListProps, ListItem, ListType } from "../types";
 import { longListData } from "./constants";
 import { ItemsList } from "./ItemsList";
 

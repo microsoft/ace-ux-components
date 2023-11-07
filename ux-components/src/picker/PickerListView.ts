@@ -5,7 +5,6 @@
 
 import {
   BaseAdaptiveCardQuickView,
-  HostTheme,
   IFocusParameters,
   ISPFxAdaptiveCard,
   ISubmitActionArguments,
@@ -17,7 +16,7 @@ import { Header, HeaderType } from "../header";
 import { List, SectionList } from "../list";
 import { ListActionID } from "../list/types";
 import { SearchBar, SearchBarProps } from "../search";
-import { AriaLive, ListKeys, MOBILE, NewListType, SectionListData } from "../types";
+import { AriaLive, HostTheme, ListKeys, MOBILE, NewListType, SectionListData } from "../types";
 import { ListOptions, PickerHelpers, SectionOptions } from "./PickerHelpers";
 
 export type ViewProps = {

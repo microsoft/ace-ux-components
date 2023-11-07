@@ -7,8 +7,8 @@ import { ActionType, ColumnSet, Container, Image, TextBlock } from "../elements"
 import { ListKeys, NewListType } from "../types";
 import { List } from "./List";
 import { ListActionID } from "./types";
+import { HostTheme } from "../types";
 import { peopleData } from "./constants";
-import { HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
 import { AvatarBlue_light } from "../assets";
 
 const testHostTheme: HostTheme = "light";

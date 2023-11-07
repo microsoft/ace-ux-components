@@ -1,7 +1,7 @@
-import { BaseViewWithComponents } from "ace-ux-components";
+import { BaseViewWithComponents, HostTheme, getTheme } from "ace-ux-components";
 import { ComponentDisplayNames } from "../constants";
 import { ISampleComponentsAdaptiveCardExtensionState, SampleComponentData } from "../sampleComponentTypes";
-import { AdaptiveCardExtensionContext, HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
+import { AdaptiveCardExtensionContext } from "@microsoft/sp-adaptive-card-extension-base";
 
 export abstract class SampleBaseQuickView extends BaseViewWithComponents<
   {},
@@ -16,6 +16,6 @@ export abstract class SampleBaseQuickView extends BaseViewWithComponents<
 
   constructor(context: AdaptiveCardExtensionContext) {
     super();
-    this.hostTheme = context?.hostContext?.theme;
+    this.hostTheme = getTheme(context);
   }
 }

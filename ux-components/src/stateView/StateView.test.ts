@@ -6,7 +6,7 @@
 import { LARGE_IMAGE_SIZE, SMALL_IMAGE_SIZE } from "./constants";
 import { StateView } from "./StateView";
 import { StateViewButtonProps, StateViewType } from "./StateView.types";
-import { HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
+import { HostTheme } from "../types";
 
 describe("StateView Component", () => {
   beforeEach(() => {

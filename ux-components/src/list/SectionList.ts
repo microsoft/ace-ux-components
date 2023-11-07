@@ -3,7 +3,6 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-import { HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
 import { ComplexComponent } from "../baseComponent/ComplexComponent";
 import {
   ActionSubmit,
@@ -21,6 +20,7 @@ import {
 import { IconName, IconProps, ListKeys, NewListType, SectionListData } from "../types";
 import { List } from "./List";
 import { ListActionID } from "./types";
+import { HostTheme } from "../types";
 import { getIcon } from "../getIcon";
 
 export class SectionList extends ComplexComponent {
