@@ -23,9 +23,7 @@ import {
 } from "../../elements";
 
 import { SearchBarProps } from "./SearchBarProps.types";
-import { IconName } from "../../types";
-import { HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
-
+import { HostTheme, IconName } from "../../types";
 export class SearchBar extends Container {
   private searchTextValue: string;
   private searchBoxInputId: string;

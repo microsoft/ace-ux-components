@@ -1,4 +1,4 @@
-import { HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
+import { HostTheme } from "../types";
 import { ErrorAlertBoxView } from "./ErrorAlertBoxView";
 
 const testHostTheme: HostTheme = "light";

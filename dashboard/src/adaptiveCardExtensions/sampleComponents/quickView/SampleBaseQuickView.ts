@@ -1,7 +1,7 @@
-import { BaseViewWithComponents } from "ace-ux-components";
+import { BaseViewWithComponents, HostTheme } from "ace-ux-components";
 import { ComponentDisplayNames } from "../constants";
 import { ISampleComponentsAdaptiveCardExtensionState, SampleComponentData } from "../sampleComponentTypes";
-import { AdaptiveCardExtensionContext, HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
+import { AdaptiveCardExtensionContext } from "@microsoft/sp-adaptive-card-extension-base";
 
 export abstract class SampleBaseQuickView extends BaseViewWithComponents<
   {},
@@ -14,8 +14,16 @@ export abstract class SampleBaseQuickView extends BaseViewWithComponents<
     return ComponentDisplayNames.mainQuickView as string;
   }
 
+  public getTheme(context: AdaptiveCardExtensionContext) {
+    let theme;
+    context.sdks?.microsoftTeams?.teamsJs.app.getContext().then((context) => {
+      theme = context.app.appInfo.theme;
+    });
+    return theme;
+  }
+
   constructor(context: AdaptiveCardExtensionContext) {
     super();
-    this.hostTheme = context?.hostContext?.theme;
+    this.hostTheme = this.getTheme(context);
   }
 }

@@ -3,11 +3,11 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-import { HostTheme, ISPFxAdaptiveCard } from "@microsoft/sp-adaptive-card-extension-base";
+import { ISPFxAdaptiveCard } from "@microsoft/sp-adaptive-card-extension-base";
 import { BaseViewWithComponents } from "../baseQuickView";
-import { ColumnSet, Container, FontSize, FontWeight, TextBlock } from "../elements";
+import { ColumnSet, Container} from "../elements";
 import { Picker, PickerProps } from "../picker";
-import { MOBILE } from "../types";
+import { HostTheme, MOBILE } from "../types";
 import { Header, HeaderType } from "./Header";
 
 jest.mock("@microsoft/sp-http", () => ({}));

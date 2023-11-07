@@ -1,6 +1,6 @@
 import { AlertBoxStateView } from "./AlertBoxStateView";
 import { ActionStyle, ContainerStyle } from "../elements";
-import { HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
+import { HostTheme } from "../types";
 
 const testHostTheme: HostTheme = "light";
 

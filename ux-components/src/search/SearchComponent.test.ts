@@ -3,8 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-import { HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
-import { ItemsListProps, ListItem, ListType } from "../types";
+import { HostTheme, ItemsListProps, ListItem, ListType } from "../types";
 import { ItemsList } from "./../itemsList/ItemsList";
 import { SearchBar } from "./searchBar";
 import { SearchBarProps } from "./searchBar/SearchBarProps.types";

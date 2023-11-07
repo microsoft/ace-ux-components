@@ -3,9 +3,8 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-import { HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
 import { List, SectionList } from "../list";
-import { NewListType } from "../types";
+import { HostTheme, NewListType } from "../types";
 import { ListOptions, PickerHelpers, SectionOptions } from "./PickerHelpers";
 
 const testHostTheme: HostTheme = "light";

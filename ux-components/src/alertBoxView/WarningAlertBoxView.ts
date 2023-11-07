@@ -1,7 +1,7 @@
 import { AlertBoxStateView } from "./AlertBoxStateView";
 import { AlertBoxIconSize, AlertIcon, AlertViewAction } from "./AlertBoxStateView.types";
 import { ContainerStyle } from "../elements";
-import { HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
+import { HostTheme } from "../types";
 
 export class WarningAlertBoxView extends AlertBoxStateView {
   constructor(

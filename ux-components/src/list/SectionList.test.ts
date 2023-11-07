@@ -3,13 +3,13 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-import { HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
 import { ColumnSet, FontColor, FontSize, FontWeight, Image, TextBlock } from "../elements";
 import { NewListType } from "../types";
 import { sectionActionTexts, sectionListData } from "./constants";
 import { List } from "./List";
 import { SectionList } from "./SectionList";
 import { ListActionID } from "./types";
+import { HostTheme } from "../types";
 
 const testHostTheme: HostTheme = "light";
 describe("SectionList component", () => {

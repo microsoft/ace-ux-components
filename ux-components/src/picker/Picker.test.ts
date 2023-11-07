@@ -3,9 +3,9 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-import { BaseAdaptiveCardQuickView, HostTheme, ISPFxAdaptiveCard } from "@microsoft/sp-adaptive-card-extension-base";
+import { BaseAdaptiveCardQuickView, ISPFxAdaptiveCard } from "@microsoft/sp-adaptive-card-extension-base";
 import { ColumnSet, ElementType, FontSize, FontWeight, Image, TextBlock } from "../elements";
-import { SectionListData } from "../types";
+import { HostTheme, SectionListData } from "../types";
 import { ListOptions, SectionOptions } from "./PickerHelpers";
 import { Picker } from "./Picker";
 

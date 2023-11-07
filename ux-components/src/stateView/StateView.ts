@@ -21,7 +21,7 @@ import {
   VerticalAlignment,
 } from "../elements";
 import { StateViewButtonProps, StateType, StateViewType } from "./StateView.types";
-import { HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
+import { HostTheme } from "../types";
 import { IconName, IconProps } from "../types";
 import { getIcon } from "../getIcon";
 

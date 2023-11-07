@@ -26,7 +26,7 @@ import { BaseActionElement } from "../elements/BaseActionElement";
 import { CHEVRON_RIGHT, EMPLOYEE_ALT_TEXT, LOCATION_STATUS_ICON, STATUS_ICON } from "./constants";
 import { CalendarStatusType, PersonaParams, WorkStatus } from "./Persona.type";
 import { IconName } from "../types";
-import { HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
+import { HostTheme } from "../types";
 
 function createInitialsImage(name: string) {
   const namesArray = name?.split(" ");

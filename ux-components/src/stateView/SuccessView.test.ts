@@ -6,7 +6,7 @@
 import { SUCCESS_IMAGE_ALT_TEXT, LARGE_IMAGE_SIZE, SMALL_IMAGE_SIZE } from "./constants";
 import { SuccessView } from "./SuccessView";
 import { StateViewType } from "./StateView.types";
-import { HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
+import { HostTheme } from "../types";
 
 describe("SuccessView Component", () => {
   beforeEach(() => {

@@ -3,10 +3,10 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-import { BaseAdaptiveCardQuickView, HostTheme, ISPFxAdaptiveCard } from "@microsoft/sp-adaptive-card-extension-base";
+import { BaseAdaptiveCardQuickView, ISPFxAdaptiveCard } from "@microsoft/sp-adaptive-card-extension-base";
 import { createTemplate } from "../createTemplate";
 import { Alignment, Container, FontWeight, Image, TextBlock } from "../elements";
-import { Annotation, AnnotationSimple, IconName } from "../types";
+import { Annotation, AnnotationSimple, HostTheme, IconName } from "../types";
 import { Header, HeaderType } from "../header/Header";
 import { getIcon } from "../getIcon";
 

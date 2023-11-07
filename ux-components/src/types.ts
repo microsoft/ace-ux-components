@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-import { DeviceContext, HostTheme } from "@microsoft/sp-adaptive-card-extension-base";
+import { DeviceContext } from "@microsoft/sp-adaptive-card-extension-base";
 import { Alignment } from "./elements";
 import { BaseActionElement } from "./elements/BaseActionElement";
 import { CalendarStatusType, WorkStatus } from "./persona";
@@ -18,6 +18,8 @@ export enum LoadingSize {
   Medium = "medium",
   Large = "large",
 }
+
+export type HostTheme = "light" | "dark" | undefined;
 
 export enum NewListType {
   BasicList = "BasicList",
