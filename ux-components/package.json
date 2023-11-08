@@ -31,9 +31,9 @@
     "preinstall": "npx force-resolutions"
   },
   "dependencies": {
-    "@microsoft/sp-adaptive-card-extension-base": "1.18.1-rc.0",
-    "@microsoft/sp-core-library": "1.18.1-rc.0",
-    "@microsoft/sp-property-pane": "1.18.1-rc.0",
+    "@microsoft/sp-adaptive-card-extension-base": "^1.18.1-rc.0",
+    "@microsoft/sp-core-library": "^1.18.1-rc.0",
+    "@microsoft/sp-property-pane": "^1.18.1-rc.0",
     "dayjs": "^1.11.1"
   },
   "devDependencies": {
@@ -41,9 +41,9 @@
     "@babel/preset-env": "^7.14.7",
     "@babel/preset-typescript": "^7.14.5",
     "@microsoft/rush-stack-compiler-4.5": "0.4.0",
-    "@microsoft/sp-build-web": "1.18.1-rc.0",
+    "@microsoft/sp-build-web": "^1.18.1-rc.0",
     "@microsoft/sp-module-interfaces": "^1.18.1-rc.0",
-    "@microsoft/sp-tslint-rules": "1.18.1-rc.0",
+    "@microsoft/sp-tslint-rules": "^1.18.1-rc.0",
     "@types/es6-promise": "^3.3.0",
     "@types/jest": "^26.0.24",
     "@types/jest-when": "^2.7.3",
