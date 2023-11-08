@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "update package.json",
+  "packageName": "@microsoft/ace-ux-components",
+  "email": "kylemas@microsoft.com",
+  "dependentChangeType": "patch"
+}
