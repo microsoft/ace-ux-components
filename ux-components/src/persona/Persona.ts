@@ -95,7 +95,9 @@ export class Persona extends Container {
 
   public withStatusText(statusIconImageUrl?: string, statusText?: string, statusTextColor?: FontColor): Persona {
     let cs: ColumnSet = new ColumnSet([
-      new Column([new Image(statusIconImageUrl, STATUS_ICON)]).setWidth("20px"),
+      new Column([new Image(statusIconImageUrl, statusText ? `Status is ${statusText}` : STATUS_ICON)]).setWidth(
+        "20px"
+      ),
       new Column([
         new TextBlock(statusText)
           .setHorizontalAlignment(Alignment.Left)

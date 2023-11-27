@@ -305,9 +305,15 @@ export class List extends ComplexComponent {
           ]).shrink()
         );
         currentColumnSet.setAction(
-          new ActionSubmit(`${actionID}${index}-${this.componentID}`, `Item ${index + 1} of ${this.listData.length}`, {
-            selectedItem: this.listData[index + this.startIndex],
-          })
+          new ActionSubmit(
+            `${actionID}${index}-${this.componentID}`,
+            `${this.listData[index + this.startIndex][this.listDataKeys.titleKey]} Item ${index + 1} of ${
+              this.listData.length
+            }`,
+            {
+              selectedItem: this.listData[index + this.startIndex],
+            }
+          )
         );
       }
     }
@@ -325,10 +331,16 @@ export class List extends ComplexComponent {
       const item = this.items[index];
       if (item instanceof Container) {
         item.setAction(
-          new ActionSubmit(`${actionID}${index}-${this.componentID}`, `Item ${index + 1} of ${this.listData.length}`, {
-            selectedItem: this.listData[index + this.startIndex],
-            selectedItemIndex: index + this.startIndex,
-          })
+          new ActionSubmit(
+            `${actionID}${index}-${this.componentID}`,
+            `${this.listData[index + this.startIndex][this.listDataKeys.titleKey]}, Item ${index + 1} of ${
+              this.listData.length
+            }`,
+            {
+              selectedItem: this.listData[index + this.startIndex],
+              selectedItemIndex: index + this.startIndex,
+            }
+          )
         );
       }
     }
