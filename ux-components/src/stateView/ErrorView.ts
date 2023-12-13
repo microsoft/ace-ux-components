@@ -9,7 +9,7 @@ import { StateViewType } from "./StateView.types";
 import { HostTheme } from "../types";
 
 export class ErrorView extends StateView {
-  constructor(stateViewType: StateViewType, header: string, hostTheme: HostTheme) {
-    super(stateViewType, header, ERROR_IMAGE_ALT_TEXT, "Error", hostTheme);
+  constructor(stateViewType: StateViewType, header: string, hostTheme: HostTheme, altText?: string) {
+    super(stateViewType, header, altText ? altText : ERROR_IMAGE_ALT_TEXT, "Error", hostTheme);
   }
 }
