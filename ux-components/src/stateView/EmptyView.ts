@@ -9,7 +9,7 @@ import { StateViewType } from "./StateView.types";
 import { HostTheme } from "../types";
 
 export class EmptyView extends StateView {
-  constructor(stateViewType: StateViewType, header: string, hostTheme: HostTheme) {
-    super(stateViewType, header, EMPTY_IMAGE_ALT_TEXT, "Empty", hostTheme);
+  constructor(stateViewType: StateViewType, header: string, hostTheme: HostTheme, altText?: string) {
+    super(stateViewType, header, altText ? altText : EMPTY_IMAGE_ALT_TEXT, "Empty", hostTheme);
   }
 }

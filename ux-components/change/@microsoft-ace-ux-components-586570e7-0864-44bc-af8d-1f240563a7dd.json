@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "A11y Fix in Success view State",
+  "packageName": "@microsoft/ace-ux-components",
+  "email": "jwala.kompalli@microsoft.com",
+  "dependentChangeType": "patch"
+}
