@@ -223,3 +223,7 @@ export const sectionListData: SectionListData[] = [
 ];
 
 export const sectionActionTexts: string[] = ["Action 1", "Action 2", "Action 3"];
+
+// Focus IDs
+export const nextPageFocusId: string = "nextPageActionFocusID";
+export const prevPageFocusId: string = "prevPageActionFocusID";
