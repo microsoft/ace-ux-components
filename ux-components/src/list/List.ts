@@ -27,6 +27,7 @@ import { IconName, IconProps, ListKeys, NewListType } from "../types";
 import { ListActionID } from "./types";
 import { HostTheme } from "../types";
 import { getIcon } from "../getIcon";
+import { nextPageFocusId, prevPageFocusId } from "./constants";
 
 const PAGINATION_SKIP: number = 25;
 
@@ -103,9 +104,9 @@ export class List extends ComplexComponent {
 
       const paginationSection: ColumnSet = new ColumnSet([
         new Column([]).stretch(),
-        new Column([getIcon(iconPropsLeft)]).shrink(),
+        new Column([getIcon(iconPropsLeft).setID(prevPageFocusId)]).shrink(),
         new Column([new TextBlock(`${this.startIndex + 1}-${end}`)]).shrink(),
-        new Column([getIcon(iconPropsRight)]).shrink(),
+        new Column([getIcon(iconPropsRight).setID(nextPageFocusId)]).shrink(),
         new Column([]).stretch(),
       ]);
 
@@ -114,8 +115,8 @@ export class List extends ComplexComponent {
           new ActionSubmit(
             `${ListActionID.PreviousPage}-${this.componentID}`,
             "Go to previous page",
-            { componentID: this.componentID },
-            "Go to previous page"
+            { componentID: this.componentID, focusId: prevPageFocusId },
+            `Go to previous page, currently showing ${this.startIndex + 1}-${end} results`
           )
         );
       }
@@ -125,8 +126,8 @@ export class List extends ComplexComponent {
           new ActionSubmit(
             `${ListActionID.NextPage}-${this.componentID}`,
             "Go to next page",
-            { componentID: this.componentID },
-            "Go to next page"
+            { componentID: this.componentID, focusId: nextPageFocusId },
+            `Go to next page, currently showing ${this.startIndex + 1}-${end} results`
           )
         );
       }

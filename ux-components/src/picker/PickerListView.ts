@@ -229,10 +229,14 @@ export class PickerListView<TState> extends BaseAdaptiveCardQuickView<{}, TState
     } else if (id.includes(ListActionID.NextPage)) {
       const list: List = this.listsDictionary[data.componentID] as List;
       list.nextPage();
+      // Keeps focus on the next page button
+      this.focusID = data.focusId;
       this.setState({});
     } else if (id.includes(ListActionID.PreviousPage)) {
       const list: List = this.listsDictionary[data.componentID] as List;
       list.previousPage();
+      // Keeps focus on the prev page button
+      this.focusID = data.focusId;
       this.setState({});
     } else if (id.includes(ListActionID.RadioAction)) {
       const list: List = this.listsDictionary[data.componentID] as List;

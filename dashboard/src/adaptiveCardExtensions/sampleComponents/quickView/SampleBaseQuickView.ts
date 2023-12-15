@@ -16,6 +16,7 @@ export abstract class SampleBaseQuickView extends BaseViewWithComponents<
 
   constructor(context: AdaptiveCardExtensionContext) {
     super();
+    // @ts-ignore
     this.hostTheme = getTheme(context);
   }
 }
