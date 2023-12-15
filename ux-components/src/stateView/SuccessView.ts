@@ -9,7 +9,7 @@ import { StateViewType } from "./StateView.types";
 import { HostTheme } from "../types";
 
 export class SuccessView extends StateView {
-  constructor(stateViewType: StateViewType, header: string, hostTheme: HostTheme) {
-    super(stateViewType, header, SUCCESS_IMAGE_ALT_TEXT, "Success", hostTheme);
+  constructor(stateViewType: StateViewType, header: string, hostTheme: HostTheme, altText?: string) {
+    super(stateViewType, header, altText ? altText : SUCCESS_IMAGE_ALT_TEXT, "Success", hostTheme);
   }
 }
