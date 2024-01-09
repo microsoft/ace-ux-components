@@ -106,13 +106,13 @@ export class ItemsList extends Container {
 
       const iconPropsLeft: IconProps = {
         icon: isFirstPage ? IconName.ChevronLeftDisabled : IconName.ChevronLeft,
-        altText: "Left arrow",
+        altText: `Go to previous page, currently showing ${start + 1}-${end} results`,
         hostTheme: this.hostTheme,
       };
 
       const iconPropsRight: IconProps = {
         icon: isLastPage ? IconName.ChevronRightDisabled : IconName.ChevronRight,
-        altText: "Right arrow",
+        altText: `Go to next page, currently showing ${start + 1}-${end} results`,
         hostTheme: this.hostTheme,
       };
 
@@ -130,14 +130,19 @@ export class ItemsList extends Container {
             this.previousPageId,
             "Go to previous page",
             { currentStartIndex: start },
-            "Go to previous page"
+            `Go to previous page, currently showing ${start + 1}-${end} results`,
           )
         );
       }
 
       if (!isLastPage) {
         paginationSection.columns[3].setAction(
-          new ActionSubmit(this.nextPageId, "Go to next page", { currentStartIndex: start }, "Go to next page")
+          new ActionSubmit(
+            this.nextPageId,
+            "Go to next page",
+            { currentStartIndex: start }, 
+            `Go to next page, currently showing ${start + 1}-${end} results`,
+          )
         );
       }
 
