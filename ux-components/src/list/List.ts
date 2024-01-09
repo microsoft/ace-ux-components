@@ -92,13 +92,13 @@ export class List extends ComplexComponent {
 
       const iconPropsLeft: IconProps = {
         icon: isFirstPage ? IconName.ChevronLeftDisabled : IconName.ChevronLeft,
-        altText: "Left arrow",
+        altText: `Go to previous page, currently showing ${this.startIndex + 1}-${end} results`,
         hostTheme: this.hostTheme,
       };
 
       const iconPropsRight: IconProps = {
         icon: isLastPage ? IconName.ChevronRightDisabled : IconName.ChevronRight,
-        altText: "Right arrow",
+        altText: `Go to previous page, currently showing ${this.startIndex + 1}-${end} results`,
         hostTheme: this.hostTheme,
       };
 
