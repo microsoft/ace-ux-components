@@ -30,6 +30,7 @@ import {
   ListType,
 } from "../types";
 import { getIcon } from "../getIcon";
+import { nextPageFocusId, prevPageFocusId } from "src/list/constants";
 
 export const PAGINATION_SKIP: number = 25;
 
@@ -118,9 +119,9 @@ export class ItemsList extends Container {
 
       const paginationSection: ColumnSet = new ColumnSet([
         new Column([]).stretch(),
-        new Column([getIcon(iconPropsLeft)]).shrink(),
+        new Column([getIcon(iconPropsLeft).setID(prevPageFocusId)]).shrink(),
         new Column([new TextBlock(`${start + 1}-${end}`)]).shrink(),
-        new Column([getIcon(iconPropsRight)]).shrink(),
+        new Column([getIcon(iconPropsRight).setID(nextPageFocusId)]).shrink(),
         new Column([]).stretch(),
       ]);
 
@@ -129,7 +130,7 @@ export class ItemsList extends Container {
           new ActionSubmit(
             this.previousPageId,
             "Go to previous page",
-            { currentStartIndex: start },
+            { currentStartIndex: start, focusID: prevPageFocusId },
             `Go to previous page, currently showing ${start + 1}-${end} results`,
           )
         );
@@ -140,7 +141,7 @@ export class ItemsList extends Container {
           new ActionSubmit(
             this.nextPageId,
             "Go to next page",
-            { currentStartIndex: start }, 
+            { currentStartIndex: start, focusID: nextPageFocusId }, 
             `Go to next page, currently showing ${start + 1}-${end} results`,
           )
         );
