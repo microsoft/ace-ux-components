@@ -30,6 +30,7 @@ import {
   ListType,
 } from "../types";
 import { getIcon } from "../getIcon";
+import { nextPageFocusId, prevPageFocusId } from "../list/constants";
 
 export const PAGINATION_SKIP: number = 25;
 
@@ -106,21 +107,21 @@ export class ItemsList extends Container {
 
       const iconPropsLeft: IconProps = {
         icon: isFirstPage ? IconName.ChevronLeftDisabled : IconName.ChevronLeft,
-        altText: "Left arrow",
+        altText: `Go to previous page, currently showing ${start + 1}-${end} results`,
         hostTheme: this.hostTheme,
       };
 
       const iconPropsRight: IconProps = {
         icon: isLastPage ? IconName.ChevronRightDisabled : IconName.ChevronRight,
-        altText: "Right arrow",
+        altText: `Go to next page, currently showing ${start + 1}-${end} results`,
         hostTheme: this.hostTheme,
       };
 
       const paginationSection: ColumnSet = new ColumnSet([
         new Column([]).stretch(),
-        new Column([getIcon(iconPropsLeft)]).shrink(),
+        new Column([getIcon(iconPropsLeft).setID(prevPageFocusId)]).shrink(),
         new Column([new TextBlock(`${start + 1}-${end}`)]).shrink(),
-        new Column([getIcon(iconPropsRight)]).shrink(),
+        new Column([getIcon(iconPropsRight).setID(nextPageFocusId)]).shrink(),
         new Column([]).stretch(),
       ]);
 
@@ -129,15 +130,20 @@ export class ItemsList extends Container {
           new ActionSubmit(
             this.previousPageId,
             "Go to previous page",
-            { currentStartIndex: start },
-            "Go to previous page"
+            { currentStartIndex: start, focusID: prevPageFocusId },
+            `Go to previous page, currently showing ${start + 1}-${end} results`,
           )
         );
       }
 
       if (!isLastPage) {
         paginationSection.columns[3].setAction(
-          new ActionSubmit(this.nextPageId, "Go to next page", { currentStartIndex: start }, "Go to next page")
+          new ActionSubmit(
+            this.nextPageId,
+            "Go to next page",
+            { currentStartIndex: start, focusID: nextPageFocusId }, 
+            `Go to next page, currently showing ${start + 1}-${end} results`,
+          )
         );
       }
 
