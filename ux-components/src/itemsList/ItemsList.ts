@@ -30,7 +30,7 @@ import {
   ListType,
 } from "../types";
 import { getIcon } from "../getIcon";
-import { nextPageFocusId, prevPageFocusId } from "src/list/constants";
+import { nextPageFocusId, prevPageFocusId } from "../list/constants";
 
 export const PAGINATION_SKIP: number = 25;
 
