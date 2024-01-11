@@ -163,6 +163,7 @@ export enum IconName {
   ChevronUpDisabled = "ChevronUpDisabled",
   ClearSearchBar = "ClearSearchBar",
   DismissIcon = "DismissIcon",
+  DeleteIcon = "DeleteIcon",
   EmptyIllustration = "EmptyIllustration",
   EmptySmallIllustration = "EmptySmallIllustration",
   ErrorIllustration = "ErrorIllustration",

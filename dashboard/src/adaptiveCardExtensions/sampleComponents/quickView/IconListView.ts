@@ -34,6 +34,7 @@ export class IconListView extends SampleBaseQuickView {
     IconName.ChevronUpDisabled,
     IconName.ClearSearchBar,
     IconName.DismissIcon,
+    IconName.DeleteIcon,
     IconName.EmptyIllustration,
     IconName.EmptySmallIllustration,
     IconName.ErrorIllustration,

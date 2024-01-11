@@ -47,6 +47,8 @@ import {
   ChevronUp_light,
   ClearSearchBar_dark,
   ClearSearchBar_light,
+  DeleteIcon_dark,
+  DeleteIcon_light,
   DesktopFilled_dark,
   DesktopFilled_light,
   DesktopOutlined_dark,
@@ -228,6 +230,10 @@ export function getThemeBasesIcon(iconName: IconName, hostTheme: HostTheme): str
     }
     case IconName.DismissIcon: {
       imageURL = hostTheme === "dark" ? DismissIcon_dark : DismissIcon_light;
+      break;
+    }
+    case IconName.DeleteIcon: {
+      imageURL = hostTheme === "dark" ? DeleteIcon_dark : DeleteIcon_light;
       break;
     }
     case IconName.EmptyIllustration: {
