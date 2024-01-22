@@ -113,7 +113,7 @@ export class ItemsList extends Container {
 
       const iconPropsRight: IconProps = {
         icon: isLastPage ? IconName.ChevronRightDisabled : IconName.ChevronRight,
-        altText: isFirstPage ? `Go to previous page button unavailable` : `Go to next page, currently showing ${start + 1}-${end} results`,
+        altText: isLastPage ? `Go to next page button unavailable` : `Go to next page, currently showing ${start + 1}-${end} results`,
         hostTheme: this.hostTheme,
       };
 
