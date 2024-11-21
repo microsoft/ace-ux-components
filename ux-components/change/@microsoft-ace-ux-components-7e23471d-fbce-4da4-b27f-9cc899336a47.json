@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "update getTheme method async",
+  "packageName": "@microsoft/ace-ux-components",
+  "email": "kylemas@microsoft.com",
+  "dependentChangeType": "patch"
+}
